@@ -25,6 +25,7 @@ zpacman_frontend='yay'
 
 eval $(thefuck --alias)
 
+export TERM='xterm-256color'
 export EDITOR='nvim'
 export GOPATH=~/go
 export XDG_CONFIG_HOME="$HOME/.config"
@@ -35,13 +36,12 @@ alias please='sudo `fc -ln -1`'
 alias vim='nvim'
 alias vi='nvim'
 
-# Setup system theme
-export SYSTEM_THEME="tomorrow-night"
-
 # Shell theme
 if [[ ! -d ~/.config/base16-shell ]]; then
   git clone https://github.com/chriskempson/base16-shell.git ~/.config/base16-shell
 fi
 
-BASE16_SHELL="$HOME/.config/base16-shell/base16-${SYSTEM_THEME}.sh"
-[ -n "$PS1" ] && [ -s $BASE16_SHELL/profile_helper.sh ] && eval "$($BASE16_SHELL/profile_helper.sh)"
+BASE16_SHELL="$HOME/.config/base16-shell/"
+[ -n "$PS1" ] && \
+    [ -s "$BASE16_SHELL/profile_helper.sh" ] && \
+        eval "$("$BASE16_SHELL/profile_helper.sh")"
