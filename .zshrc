@@ -18,10 +18,6 @@ export ZIM_HOME=${ZDOTDIR:-${HOME}}/.zim
 # Start zim
 [[ -s ${ZIM_HOME}/init.zsh ]] && source ${ZIM_HOME}/init.zsh
 
-zprompt_theme='pure'
-zssh_ids=(id_ed25519)
-zpacman_frontend='yay'
-
 
 eval $(thefuck --alias)
 
