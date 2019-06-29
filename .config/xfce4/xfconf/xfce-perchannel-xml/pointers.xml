@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<channel name="pointers" version="1.0">
+  <property name="SynPS2_Synaptics_TouchPad" type="empty">
+    <property name="Properties" type="empty">
+      <property name="Device_Enabled" type="int" value="1"/>
+    </property>
+  </property>
+  <property name="DisableTouchpadWhileTyping" type="bool" value="true"/>
+  <property name="DisableTouchpadDuration" type="double" value="0.500000"/>
+</channel>
