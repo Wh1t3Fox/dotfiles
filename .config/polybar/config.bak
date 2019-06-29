@@ -1,0 +1,303 @@
+[colors]
+background = #c0000000
+foreground = #a0ebdbb2
+foreground-alt = #90665c54
+primary = #ffb52a
+secondary = #e60053
+alert = #bd2c40
+white = #fbf1c7
+red = #cc241d
+green = #98971a
+yellow = #d79921
+blue = #458588
+purple = #b16286
+aqua = #689d6a
+orange = #d65d0e
+
+[bar/primary]
+width = 100%
+height = 28
+offset-x = 0
+offset-y = 0
+radius-top = 0
+radius-bottom = 4
+monitor = eDP1
+fixed-center = true
+background = ${colors.background}
+foreground = ${colors.foreground}
+padding-left = 1
+padding-right = 1
+module-margin-left = 1
+module-margin-right = 1
+font-0 = Source Code Pro:pixelsize=15;3
+font-1 = Font Awesome 5 Free:pixelsize=14;3
+font-2 = DejaVuSansMono Nerd Font:pixelsize=15;3
+modules-left = bspwm
+modules-center = date
+modules-right = pkg wlan redshift volume battery
+wm-restack = bspwm
+tray-position = right
+
+
+[module/bspwm]
+type = internal/bspwm
+
+;ws-icon-0 = I;
+ws-icon-0 = I;
+ws-icon-1 = II;
+ws-icon-2 = III;
+
+ws-icon-3 = IV;
+ws-icon-4 = V;
+
+ws-icon-5 = VI;
+
+ws-icon-default = 
+
+format = <label-state> <label-mode>
+
+label-focused = %icon%
+label-focused-background = #88000000
+label-focused-underline= #ddd
+label-focused-padding = 4
+
+label-occupied = %icon%
+label-occupied-padding = 4
+
+label-urgent = %icon%
+label-urgent-padding = 4
+
+label-empty = %icon%
+label-empty-foreground = #44ffffff
+label-empty-padding = 4
+
+
+;format = <label-state>
+;label-focused-occupied = 
+;label-focused-occupied-padding = 1
+;
+;label-focused-urgent = 
+;label-focused-urgent-padding = 1
+;
+;label-focused-empty = 
+;label-focused-empty-padding = 1
+;
+;label-occupied = 
+;label-occupied-foreground = ${colors.foreground-alt}
+;label-occupied-padding = 1
+;
+;label-urgent = 
+;label-urgent-foreground = ${colors.orange}
+;label-urgent-padding = 1
+;
+;label-empty = 
+;label-empty-foreground = ${colors.foreground-alt}
+;label-empty-padding = 1
+;
+;label-monocle = " "
+;label-monocle-foreground = ${colors.foreground-alt}
+;label-tiled = " "
+;label-tiled-foreground = ${colors.foreground-alt}
+;label-fullscreen = " "
+;label-fullscreen-foreground = ${colors.foreground-alt}
+;label-floating = " "
+;label-floating-foreground = ${colors.foreground-alt}
+;label-pseudotiled = " "
+;label-pseudotiled-foreground = ${colors.foreground-alt}
+;label-locked = " "
+;label-locked-foreground = ${colors.foreground-alt}
+;label-sticky = " "
+;label-sticky-foreground = ${colors.foreground-alt}
+;label-private = "  "
+;label-private-foreground = ${colors.foreground-alt}
+
+[module/pkg]
+type = custom/script
+interval = 1200
+format = <label>
+format-underline = #dc322f
+label = "%output:0:30%"
+exec = ~/.config/polybar/pkg.sh
+exec-if = "ping -q -w 2 -c 1 176.34.135.167 > /dev/null"
+
+[module/redshift]
+type = custom/script
+interval = 5
+exec = ~/.config/polybar/redshift.sh
+
+[module/mpd]
+type = internal/mpd
+host = 127.0.0.1
+port = 6600
+;password = mysecretpassword
+
+; Seconds to sleep between progressbar/song timer sync
+; Default: 1
+interval = 2
+
+; Available tags:
+;   <label-song> (default)
+;   <label-time>
+;   <bar-progress>
+;   <toggle> - gets replaced with <icon-(pause|play)>
+;   <toggle-stop> - gets replaced with <icon-(stop|play)>
+;   <icon-random>
+;   <icon-repeat>
+;   <icon-repeatone>
+;   <icon-prev>
+;   <icon-stop>
+;   <icon-play>
+;   <icon-pause>
+;   <icon-next>
+;   <icon-seekb>
+;   <icon-seekf>
+;format-online =  <label-song>
+format-online = <icon-prev> <icon-seekb> <icon-stop> <toggle> <icon-seekf> <icon-next>  <icon-repeat> <icon-random>  <bar-progress> <label-time>  <label-song>
+
+label-song    =  %artist% - %title%
+label-offline = ---
+
+icon-play      = 
+icon-pause     = 
+icon-stop      = 
+icon-prev      = 
+icon-next      = 
+icon-seekb     = 
+icon-seekf     = 
+icon-random    = 
+icon-repeat    = 
+icon-repeatone =  1
+
+bar-progress-width = 45
+bar-progress-indicator = 
+bar-progress-fill = 
+bar-progress-empty = ─
+
+format-online-padding = 1
+
+[module/wlan]
+type = internal/network
+interface = wlp3s0
+interval = 3
+ping-interval = 3
+
+format-connected = <ramp-signal> <label-connected>
+format-packetloss = <animation-packetloss> <label-connected>
+label-connected = %essid%
+
+;format-disconnected =
+;format-disconnected = <label-disconnected>
+;label-disconnected = %ifname% disconnected
+;label-disconnected-foreground = ${colors.foreground-alt}
+
+ramp-signal-0 = 
+ramp-signal-0-foreground = ${colors.red}
+ramp-signal-1 = 
+ramp-signal-1-foreground = ${colors.yellow}
+ramp-signal-2 = 
+ramp-signal-2-foreground = ${colors.green}
+
+animation-packetloss-0 = 
+animation-packetloss-0-foreground = ${colors.yellow}
+animation-packetloss-1 = 
+animation-packetloss-1-foreground = ${colors.background}
+animation-packetloss-framerate = 1000
+
+[module/date]
+type = internal/date
+interval = 5
+
+time-alt = %H:%M
+date-alt = " %A, %e %b"
+
+time = %H:%M
+
+format-prefix = 
+format-prefix-foreground = ${colors.aqua}
+
+label = %date% %time%
+
+[module/volume]
+type = internal/volume
+
+format-volume = <ramp-volume> <label-volume>
+label-volume = %percentage%
+label-muted =  00
+label-muted-foreground = ${colors.orange}
+
+ramp-volume-0 = 
+ramp-volume-0-foreground = ${colors.red}
+ramp-volume-1 = 
+ramp-volume-1-foreground = ${colors.yellow}
+ramp-volume-2 = 
+ramp-volume-2-foreground = ${colors.green}
+
+[module/battery]
+type = internal/battery
+poll-interval = 30
+battery = BAT0
+adapter = AC0
+full-at = 96
+
+format-full = <label-full>
+format-full-prefix = " "
+format-full-prefix-foreground = ${colors.green}
+label-full = %percentage%
+
+format-charging = <label-charging>
+format-charging-prefix = " "
+format-charging-prefix-foreground = ${colors.yellow}
+label-charging = %percentage%
+
+format-discharging = <ramp-capacity>
+label-discharging = %time%
+
+ramp-capacity-0 = 
+ramp-capacity-0-background = ${colors.red}
+ramp-capacity-0-foreground = ${colors.white}
+ramp-capacity-1 = 
+ramp-capacity-1-foreground = ${colors.red}
+ramp-capacity-2 = 
+ramp-capacity-2-foreground = ${colors.yellow}
+ramp-capacity-3 = 
+ramp-capacity-3-foreground = ${colors.green}
+ramp-capacity-4 = 
+ramp-capacity-4-foreground = ${colors.green}
+
+[module/powermenu]
+type = custom/menu
+
+label-open = 
+;label-open-background = ${colors.background}
+;label-open-foreground = ${colors.foreground}
+label-close = cancel
+;label-close-background = ${colors.background}
+;label-close-foreground = ${colors.foreground}
+label-open-padding = 1
+label-close-padding = 1
+
+menu-0-0 = reboot
+menu-0-0-exec = menu-open-1
+menu-0-1 = power off
+menu-0-1-exec = menu-open-2
+menu-0-0-padding = 1
+menu-0-1-padding = 1
+
+menu-1-0 = reboot?
+menu-1-0-exec = sudo reboot
+menu-1-0-padding = 1
+
+menu-2-0 = power off?
+menu-2-0-exec = sudo poweroff
+menu-2-0-padding = 1
+
+[settings]
+screenchange-reload = true
+;compositing-background = xor
+;compositing-background = screen
+;compositing-foreground = source
+;compositing-border = over
+
+[global/wm]
+margin-top = 5
+margin-bottom = 5
