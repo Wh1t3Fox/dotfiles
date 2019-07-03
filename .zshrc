@@ -21,6 +21,8 @@ export ZIM_HOME=${ZDOTDIR:-${HOME}}/.zim
 
 eval $(thefuck --alias)
 
+kitty + complete setup zsh | source /dev/stdin
+
 export TERM='xterm-256color'
 export EDITOR='nvim'
 export GOPATH=~/go
