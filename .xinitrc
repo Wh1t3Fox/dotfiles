@@ -42,10 +42,11 @@ compton &
 dunst &
 nitrogen --restore &
 redshift &
+nm-applet &
 
-exec startxfce4
+#exec startxfce4
 #exec i3
-#sxhkd &
-#exec bspwm
+sxhkd &
+exec bspwm
 
 
