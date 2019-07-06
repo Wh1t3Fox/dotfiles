@@ -38,15 +38,15 @@ xsetroot -cursor_name left_ptr
 
 xset -b
 
-compton &
-dunst &
-nitrogen --restore &
-redshift &
-nm-applet &
+#compton &
+#dunst &
+#nitrogen --restore &
+#redshift &
+#nm-applet &
 
 #exec startxfce4
 #exec i3
-sxhkd &
+#sxhkd &
 exec bspwm
 
 
