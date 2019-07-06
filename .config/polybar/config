@@ -1,6 +1,6 @@
 
 [colors]
-background = #333333
+background = #cc333333
 background-alt = #444
 ;foreground = #2d3635
 foreground = #ffffff
@@ -66,7 +66,6 @@ modules-right = volume pkg redshift cpu temperature wlan eth battery
 
 tray-position = right
 tray-padding = 2
-tray-transparent = true
 tray-background = ${root.background}
 
 ;override-redirect = true
@@ -221,7 +220,7 @@ label = " %date%  %time% "
 label-active-font = 2
 
 [module/volume]
-type = internal/volume
+type = internal/alsa
 
 format-volume = <label-volume> <bar-volume>
 label-volume = 
@@ -292,8 +291,8 @@ format-underline = #f50a4d
 format-warn = <ramp> <label-warn>
 format-warn-underline = ${self.format-underline}
 
-label = %temperature%
-label-warn = %temperature%
+label = %temperature-c%
+label-warn = %temperature-c%
 label-warn-foreground = ${colors.secondary}
 
 ramp-0 = %{T3}
