@@ -53,9 +53,9 @@ xset -b
 
 compton &
 dunst &
-nitrogen --restore &
 redshift &
 nm-applet &
 sxhkd &
 
+feh --bg-scale ~/.wallpapers/current
 $HOME/.config/polybar/launch.sh
