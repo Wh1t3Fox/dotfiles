@@ -4,7 +4,7 @@
 
 # terminal emulator
 super + Return
-	termite
+	kitty
 
 # program launcher
 super + @space
@@ -124,6 +124,9 @@ super + {Left,Down,Up,Right}
 	bspc node -v {-20 0,0 20,0 -20,20 0}
 
 # my configs
+ctrl + alt + {l}
+    betterlockscreen -l blur
+
 XF86AudioRaiseVolume
 	amixer set Master 3%+ 
 
