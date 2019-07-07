@@ -33,6 +33,7 @@ bspc rule -a Firefox desktop=^1 follow=on focus=on
 bspc rule -a Thunderbird desktop=^2 follow=on focus=on
 bspc rule -a kitty desktop=^3 follow=on focus=on
 bspc rule -a Thunar desktop=^4 follow=on focus=on
+bspc rule -a File-roller desktop=^4 follow=on focus=on
 bspc rule -a Spotify desktop=^5 follow=on focus=on
 
 
