@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 BAR_ICON=""
-NOTIFY_ICON=/usr/share/icons/Arc/status/symbolic/software-update-available-symbolic.svg
+NOTIFY_ICON=""
 
 get_total_updates() { UPDATES=$(checkupdates 2>/dev/null | wc -l); }
 
@@ -26,9 +26,9 @@ while true; do
     # every 10 seconds another check for updates is done
     while (( UPDATES > 0 )); do
         if (( UPDATES == 1 )); then
-            echo "$UPDATES UPDATE"
+            echo "$UPDATES $NOTIFY_ICON"
         elif (( UPDATES > 1 )); then
-            echo "$UPDATES UPDATES"
+            echo "$UPDATES $NOTIFY_ICON"
         else
             echo $BAR_ICON
         fi
