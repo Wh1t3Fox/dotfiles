@@ -30,12 +30,20 @@ bspc config gapless_monocle      true
 bspc config focus_follows_pointer true
 
 bspc rule -a Firefox desktop=^1 follow=on focus=on
+bspc rule -a Chromium desktop=^1 follow=on focus=on
 bspc rule -a Thunderbird desktop=^2 follow=on focus=on
 bspc rule -a kitty desktop=^3 follow=on focus=on
 bspc rule -a Thunar desktop=^4 follow=on focus=on
 bspc rule -a File-roller desktop=^4 follow=on focus=on
 bspc rule -a Spotify desktop=^5 follow=on focus=on
 bspc rule -a VirtualBox desktop=^6 follow=on focus=on
+
+bspc rule -a Gimp follow=on floating=on
+bspc rule -a Screenkey manage=off
+bspc rule -a mplayer2 state=floating
+bspc rule -a feh state=floating
+bspc rule -a vlc state=floating
+bspc rule -a mpv state=floating
 
 
 # Autostart
