@@ -18,7 +18,7 @@ bspc config focused_sticky_border_color \#de935f
 bspc config normal_private_border_color \#282a2e
 bspc config focused_private_border_color \#282a2e
 
-bspc monitor eDP1 -d I II III IV V VI VII
+bspc monitor eDP1 -d I II III IV V VI VII VIII IX X
 
 
 bspc config border_width         5
@@ -33,10 +33,13 @@ bspc rule -a Firefox desktop=^1 follow=on focus=on
 bspc rule -a Chromium desktop=^1 follow=on focus=on
 bspc rule -a Thunderbird desktop=^2 follow=on focus=on
 bspc rule -a kitty desktop=^3 follow=on focus=on
-bspc rule -a Thunar desktop=^4 follow=on focus=on
-bspc rule -a File-roller desktop=^4 follow=on focus=on
-bspc rule -a Spotify desktop=^5 follow=on focus=on
-bspc rule -a VirtualBox desktop=^6 follow=on focus=on
+bspc rule -a Slack desktop=^4 follow=on focus=on
+bspc rule -a Discord desktop=^4 follow=on focus=on
+bspc rule -a Pidgin desktop=^4 follow=on focus=on
+bspc rule -a Thunar desktop=^5 follow=on focus=on
+bspc rule -a File-roller desktop=^5 follow=on focus=on
+bspc rule -a Spotify desktop=^6 follow=on focus=on
+bspc rule -a VirtualBox desktop=^7 follow=on focus=on
 
 bspc rule -a Gimp follow=on floating=on
 bspc rule -a Screenkey manage=off
