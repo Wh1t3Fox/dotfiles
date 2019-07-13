@@ -76,7 +76,7 @@ xset -b
 
 compton &
 dunst &
-redshift &
+redshift-gtk &
 nm-applet &
 sxhkd &
 
