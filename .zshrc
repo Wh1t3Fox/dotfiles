@@ -33,6 +33,8 @@ alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
 alias please='sudo `fc -ln -1`'
 alias vim='nvim'
 alias vi='nvim'
+alias rotate_node='sudo kill -HUP tor'
+alias dropped_pkts='journalctl -fk | grep -E "IN=\w+|OUT=\w+"'
 
 # Shell theme
 if [[ ! -d ~/.config/base16-shell ]]; then
