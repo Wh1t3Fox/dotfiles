@@ -35,11 +35,16 @@ alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
 alias please='sudo `fc -ln -1`'
 alias vim='nvim'
 alias vi='nvim'
+alias shred='shred -uzf'
 alias rotate_node='sudo kill -HUP tor'
 alias dropped_pkts='journalctl -fk | grep -E "IN=\w+|OUT=\w+"'
 # End Aliases
 
 # Start Functions
+function rshred() {
+    find $1 -type f -exec shred -uzf {} \;
+}
+
 function docker_tmp_shell() {
     docker run --rm -i -t --entrypoint=/bin/bash "$@"
 }
