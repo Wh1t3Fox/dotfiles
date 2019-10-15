@@ -33,16 +33,12 @@ export PATH="$HOME/bin:$HOME/.local/bin:$GOPATH/bin:$PATH"
 # Start Aliases
 alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
 alias please='sudo `fc -ln -1`'
-<<<<<<< HEAD
-alias vim='nvim'
-alias vi='nvim'
 alias shred='shred -uzf'
-=======
 alias vi='/usr/bin/vim'
 alias vim='/usr/bin/nvim'
->>>>>>> 0fff29f08e959da2214d91764846050799d06e8a
 alias rotate_node='sudo kill -HUP tor'
 alias dropped_pkts='journalctl -fk | grep "BLOCKED"'
+alias winbox='rdesktop -g 1920x1080 -K -E -N -r disk:share=/home/craig/Share -r clipboard:PRIMARYCLIPBOARD -u craig -p - 192.168.1.149'
 # End Aliases
 
 # Start Functions
