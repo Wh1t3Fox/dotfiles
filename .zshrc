@@ -24,10 +24,10 @@ kitty + complete setup zsh | source /dev/stdin
 
 # Start Exports
 export TERM='xterm-256color'
-export EDITOR='nvim'
+export EDITOR='vim'
 export GOPATH=~/go
 export XDG_CONFIG_HOME="$HOME/.config"
-export PATH="$HOME/bin:$HOME/.local/bin:$GOPATH/bin:$PATH"
+export PATH="$HOME/bin:$HOME/.local/bin:$GOPATH/bin:$HOME/node_modules/.bin:$PATH"
 # End Exports
 
 # Start Aliases
@@ -35,7 +35,7 @@ alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
 alias please='sudo `fc -ln -1`'
 alias shred='shred -uzf'
 alias vi='/usr/bin/vim'
-alias vim='/usr/bin/nvim'
+alias vim='/usr/bin/vim'
 alias rotate_node='sudo kill -HUP tor'
 alias dropped_pkts='journalctl -fk | grep "BLOCKED"'
 alias winbox='rdesktop -g 1920x1080 -K -E -N -r disk:share=/home/craig/Share -r clipboard:PRIMARYCLIPBOARD -u craig -p - 192.168.1.149'
