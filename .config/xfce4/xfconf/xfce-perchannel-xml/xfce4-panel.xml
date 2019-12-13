@@ -17,13 +17,15 @@
         <value type="int" value="15"/>
       </property>
       <property name="background-alpha" type="uint" value="25"/>
-      <property name="background-style" type="uint" value="1"/>
+      <property name="background-style" type="uint" value="0"/>
       <property name="background-color" type="array">
         <value type="uint" value="12079"/>
         <value type="uint" value="13364"/>
         <value type="uint" value="16191"/>
         <value type="uint" value="65535"/>
       </property>
+      <property name="enter-opacity" type="uint" value="80"/>
+      <property name="leave-opacity" type="uint" value="80"/>
     </property>
   </property>
   <property name="plugins" type="empty">
@@ -62,6 +64,13 @@
         <value type="string" value="blueman-tray"/>
         <value type="string" value="megasync"/>
       </property>
+      <property name="names-ordered" type="array">
+        <value type="string" value="volumeicon"/>
+        <value type="string" value="blueman-tray"/>
+        <value type="string" value="xfce4-power-manager"/>
+        <value type="string" value="redshift-gtk"/>
+        <value type="string" value="networkmanager applet"/>
+      </property>
     </property>
     <property name="plugin-12" type="string" value="separator">
       <property name="expand" type="bool" value="true"/>
@@ -80,6 +89,7 @@
     </property>
     <property name="plugin-1" type="string" value="applicationsmenu">
       <property name="show-button-title" type="bool" value="false"/>
+      <property name="button-icon" type="string" value="/home/craig/.icons/hacker.png"/>
     </property>
   </property>
 </channel>

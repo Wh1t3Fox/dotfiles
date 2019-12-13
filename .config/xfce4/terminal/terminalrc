@@ -32,4 +32,8 @@ MiscNewTabAdjacent=FALSE
 ScrollingBar=TERMINAL_SCROLLBAR_NONE
 ScrollingUnlimited=TRUE
 TitleMode=TERMINAL_TITLE_REPLACE
+ColorUseTheme=TRUE
+MiscSearchDialogOpacity=100
+MiscShowUnsafePasteDialog=FALSE
+FontName=SF Mono 12
 
