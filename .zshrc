@@ -1,25 +1,36 @@
-# Check if zim is installed
-if [[ ! -d ~/.zim ]]; then
-  git clone --recursive https://github.com/zimfw/zimfw.git ${ZDOTDIR:-${HOME}}/.zim
-  for template_file in ${ZDOTDIR:-${HOME}}/.zim/templates/*; do
-    user_file="${ZDOTDIR:-${HOME}}/.${template_file:t}"
-    cat ${template_file} ${user_file}(.N) > ${user_file}.tmp && mv ${user_file}{.tmp,}
-  done
-  source ${ZDOTDIR:-${HOME}}/.zlogin
-fi
+source $HOME/.config/antigen.zsh
 
-#
-# User configuration sourced by interactive shells
-#
+# Load the oh-my-zsh's library.
+antigen use oh-my-zsh
 
-# Define zim location
-export ZIM_HOME=${ZDOTDIR:-${HOME}}/.zim
+# Bundles from the default repo (robbyrussell's oh-my-zsh).
+antigen bundle git
+antigen bundle pip
+antigen bundle command-not-found
 
-# Start zim
-[[ -s ${ZIM_HOME}/init.zsh ]] && source ${ZIM_HOME}/init.zsh
+# Syntax highlighting bundle.
+antigen bundle zsh-users/zsh-syntax-highlighting
+antigen bundle zsh-users/zsh-autosuggestions
+antigen bundle zsh-users/zsh-completions
+antigen bundle zsh-users/zsh-history-substring-search
 
+antigen bundle chrissicool/zsh-256color
+antigen bundle "MichaelAquilina/zsh-autoswitch-virtualenv"
+antigen bundle unixorn/autoupdate-antigen.zshplugin
+antigen bundle ael-code/zsh-colored-man-pages
+antigen bundle webyneter/docker-aliases.git
+antigen bundle unixorn/docker-helpers.zshplugin
 
+antigen theme denysdovhan/spaceship-prompt
+
+# Tell Antigen that you're done.
+antigen apply
+
+plugins=(git docker docker-compose)
+
+zstyle ":prezto:module:thefuck" alias "fuck"
 eval $(thefuck --alias)
+
 kitty + complete setup zsh | source /dev/stdin
 
 # Start Exports
@@ -35,10 +46,10 @@ alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
 alias please='sudo `fc -ln -1`'
 alias shred='shred -uzf'
 alias vi='/usr/bin/vim'
-alias vim='/usr/bin/vim'
-alias rotate_node='sudo kill -HUP tor'
 alias dropped_pkts='journalctl -fk | grep "BLOCKED"'
-alias winbox='rdesktop -g 1920x1080 -K -E -N -r disk:share=/home/craig/Share -r clipboard:PRIMARYCLIPBOARD -u craig -p - 192.168.1.149'
+alias winbox='rdesktop -g 1920x1080 -K -N -r disk:share=/home/craig/Share -r clipboard:PRIMARYCLIPBOARD -u craig -p - 192.168.1.149'
+alias l='ls -hAltr'
+alias ll='ls -hltr'
 # End Aliases
 
 # Start Functions
@@ -46,69 +57,11 @@ function rshred() {
     find $1 -type f -exec shred -uzf {} \;
 }
 
-function docker_tmp_shell() {
-    docker run --rm -i -t --entrypoint=/bin/bash "$@"
-}
-
-function docker_tmp_shell_sh() {
-    docker run --rm -i -t --entrypoint=/bin/sh "$@"
-}
-
-function docker_shell() {
-    dirname=${PWD##*/}
-    docker run --rm -it --entrypoint=/bin/bash -v `pwd`:/${dirname} -w /${dirname} "$@"
-}
-
-function docker_shell_sh() {
-    docker run --rm -it --entrypoint=/bin/sh -v `pwd`:/${dirname} -w /${dirname} "$@"
-}
-
-function dockerwindowshellhere() {
-    dirname=${PWD##*/}
-    docker -c 2019-box run --rm -it -v "C:${PWD}:C:/source" -w "C:/source" "$@"
-}
-
-impacket() {
-    docker run --rm -it rflathers/impacket "$@"
-}
-
-smbserve() {
-    local sharename
-    [[ -z $1 ]] && sharename="SHARE" || sharename=$1
-    docker run --rm -it -p 445:445 -v "${PWD}:/tmp/serve" rflathers/impacket smbserver.py -smb2support $sharename /tmp/serve
-}
-
-nginx_pwd() {
-    docker run --rm -it -p 80:80 -p 443:443 -v "${PWD}:/srv/data" rflathers/nginxserve
-}
-
-webdav_pwd() {
-    docker run --rm -it -p 80:80 -v "${PWD}:/srv/data/share" rflathers/webdav
-}
-
-metasploit() {
-    docker run --rm -it -v "${HOME}/.msf4:/home/msf/.msf4" metasploitframework/metasploit-framework ./msfconsole "$@"
-}
-
-metasploit_ports() {
-    docker run --rm -it -v "${HOME}/.msf4:/home/msf/.msf4" -p 8443-8500:8443-8500 metasploitframework/metasploit-framework ./msfconsole "$@"
-}
-
-msfvenom_pwd() {
-    docker run --rm -it -v "${HOME}/.msf4:/home/msf/.msf4" -v "${PWD}:/data" metasploitframework/metasploit-framework ./msfvenom "$@"
-}
-
-reqdump() {
-    docker run --rm -it -p 80:3000 rflathers/reqdump
-}
-
-postfiledump_pwd() {
-    docker run --rm -it -p80:3000 -v "${PWD}:/data" rflathers/postfiledump
-}
 
 autopwn() {
     docker run -it -v $PWD:/mount --security-opt="apparmor=unconfined" --cap-add=SYS_PTRACE bannsec/autopwn
 }
+
 # End Functions
 
 # Shell theme
@@ -120,3 +73,7 @@ BASE16_SHELL="$HOME/.config/base16-shell/"
 [ -n "$PS1" ] && \
     [ -s "$BASE16_SHELL/profile_helper.sh" ] && \
         eval "$("$BASE16_SHELL/profile_helper.sh")"
+
+autoload -U +X compinit && compinit
+autoload -U +X bashcompinit && bashcompinit
+source $HOME/.web/web-completion.bash
