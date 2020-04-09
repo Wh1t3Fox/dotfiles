@@ -1,3 +1,7 @@
+if [[ ! -f ~/.config/antigen.zsh ]]; then
+    curl -sSL git.io/antigen > ~/.config/antigen.zsh
+fi
+
 source $HOME/.config/antigen.zsh
 
 # Load the oh-my-zsh's library.
