@@ -1,6 +1,7 @@
-if [ ! -f ~/.config/antigen.zsh ]; then
+if [ ! -f $HOME/.config/antigen.zsh ]; then
     echo "Pulling Antigen..." >&2
-    curl -SL -o ~/.config/antigen.zsh https://git.io/antigen 
+    mkdir -p $HOME/.config/
+    curl -SL -o $HOME/.config/antigen.zsh https://git.io/antigen 
 fi
 
 source $HOME/.config/antigen.zsh
