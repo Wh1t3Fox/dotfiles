@@ -1,5 +1,5 @@
-if [[ ! -f ~/.config/antigen.zsh ]]; then
-    curl -sSL git.io/antigen -o ~/.config/antigen.zsh
+if [[ ! -f~/.config/antigen.zsh ]]; then
+    curl -vSL -o ~/.config/antigen.zsh https://git.io/antigen 
 fi
 
 source $HOME/.config/antigen.zsh
