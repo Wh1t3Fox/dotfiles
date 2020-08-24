@@ -77,7 +77,8 @@ set smartcase
 "*****************************************************************************
 syntax on
 set ruler
-set relativenumber
+set number
+set nowrap
 
 let no_buffers_menu=1
 if !exists('g:not_finish_vimplug')
@@ -183,8 +184,3 @@ let g:airline#extensions#virtualenv#enabled = 1
 
 "*****************************************************************************
 "*****************************************************************************
-
-noremap <Up> <NOP>
-noremap <Down> <NOP>
-noremap <Left> <NOP>
-noremap <Right> <NOP>
