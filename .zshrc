@@ -1,4 +1,5 @@
-if [[ ! -f~/.config/antigen.zsh ]]; then
+if [[ ! -f ~/.config/antigen.zsh ]]; then
+    touch ~/.config/antigen.zsh
     curl -vSL -o ~/.config/antigen.zsh https://git.io/antigen 
 fi
 
