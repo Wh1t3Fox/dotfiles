@@ -35,8 +35,6 @@ plugins=(git docker docker-compose)
 zstyle ":prezto:module:thefuck" alias "fuck"
 eval $(thefuck --alias)
 
-kitty + complete setup zsh | source /dev/stdin
-
 # Start Exports
 export TERM='xterm-256color'
 export EDITOR='vim'
@@ -46,12 +44,10 @@ export PATH="$HOME/bin:$HOME/.local/bin:$GOPATH/bin:$HOME/node_modules/.bin:$PAT
 # End Exports
 
 # Start Aliases
-alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
 alias please='sudo `fc -ln -1`'
 alias shred='shred -uzf'
 alias vi='/usr/bin/vim'
 alias dropped_pkts='journalctl -fk | grep "BLOCKED"'
-alias winbox='rdesktop -g 1920x1080 -K -N -r disk:share=/home/craig/Share -r clipboard:PRIMARYCLIPBOARD -u craig -p - 192.168.1.149'
 alias l='ls -hAltr'
 alias ll='ls -hltr'
 # End Aliases
@@ -59,11 +55,6 @@ alias ll='ls -hltr'
 # Start Functions
 function rshred() {
     find $1 -type f -exec shred -uzf {} \;
-}
-
-
-autopwn() {
-    docker run -it -v $PWD:/mount --security-opt="apparmor=unconfined" --cap-add=SYS_PTRACE bannsec/autopwn
 }
 
 # End Functions
@@ -77,7 +68,3 @@ BASE16_SHELL="$HOME/.config/base16-shell/"
 [ -n "$PS1" ] && \
     [ -s "$BASE16_SHELL/profile_helper.sh" ] && \
         eval "$("$BASE16_SHELL/profile_helper.sh")"
-
-autoload -U +X compinit && compinit
-autoload -U +X bashcompinit && bashcompinit
-source $HOME/.web/web-completion.bash
