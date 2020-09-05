@@ -1,6 +1,6 @@
 if [[ ! -f $HOME/.config/antigen.zsh ]]; then
     mkdir -p $HOME/.config/
-    curl -sSL git.io/antigen > ~/.config/antigen.zsh
+    curl -sSL https://git.io/antigen > ~/.config/antigen.zsh
 fi
 
 source $HOME/.config/antigen.zsh
