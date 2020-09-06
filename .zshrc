@@ -1,6 +1,6 @@
 if [[ ! -f $HOME/.config/antigen.zsh ]]; then
     mkdir -p $HOME/.config/
-    curl -sSL https://git.io/antigen > ~/.config/antigen.zsh
+    curl -sSL -o $HOME/.config/antigen.zsh https://git.io/antigen
 fi
 
 source $HOME/.config/antigen.zsh
@@ -31,7 +31,7 @@ antigen theme denysdovhan/spaceship-prompt
 # Tell Antigen that you're done.
 antigen apply
 
-plugins=(git docker docker-compose)
+plugins=(archlinux docker docker-compose fzf git pip nmap sudo)
 
 # Start Exports
 export TERM='xterm-256color'
