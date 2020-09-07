@@ -92,7 +92,7 @@ spindra() {
     img="$(sudo docker run -dit --rm \
         --net=$network \
         -v /tmp/.X11-unix:/tmp/.X11-unix \
-        -v /home/craig/spindra:/data \
+        -v $HOME/spindra:/data \
         -e DISPLAY=$DISPLAY \
         --cap-add NET_ADMIN \
         --cap-add SYS_PTRACE \
