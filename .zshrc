@@ -59,6 +59,7 @@ tunle() {
         return 1
     fi
 
+    sudo docker pull retenet/tunle
     sudo docker run -dit --rm --name tunle \
         -v $HOME/vpn/:/tmp/vpn \
         --device /dev/net/tun \
@@ -89,6 +90,7 @@ spindra() {
 
     esac
 
+    sudo docker pull wh1t3f0x/spindra
     sudo docker run -it --rm \
         --net=$network \
         -v /tmp/.X11-unix:/tmp/.X11-unix \
