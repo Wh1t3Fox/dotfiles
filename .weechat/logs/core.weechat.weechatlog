@@ -1,0 +1,142 @@
+2020-11-14 14:46:28		New key binding (context "default"): meta2-1;5P => /bar scroll buflist * -100%
+2020-11-14 14:46:28		New key binding (context "default"): meta2-1;5Q => /bar scroll buflist * +100%
+2020-11-14 14:46:28		New key binding (context "default"): meta-meta-OQ => /bar scroll buflist * e
+2020-11-14 14:46:28		New key binding (context "default"): meta2-1;3Q => /bar scroll buflist * e
+2020-11-14 14:46:28		New key binding (context "default"): meta2-1;3P => /bar scroll buflist * b
+2020-11-14 14:46:28		New key binding (context "default"): meta-meta-OP => /bar scroll buflist * b
+2020-11-14 14:46:28		New key binding (context "default"): meta-B => /buflist toggle
+2020-11-14 14:46:28		New key binding (context "default"): meta-OQ => /bar scroll buflist * +100%
+2020-11-14 14:46:28		New key binding (context "default"): meta-OP => /bar scroll buflist * -100%
+2020-11-14 14:46:28		New key binding (context "default"): meta-meta2-12~ => /bar scroll buflist * e
+2020-11-14 14:46:28		New key binding (context "default"): meta-meta2-11~ => /bar scroll buflist * b
+2020-11-14 14:46:28		New key binding (context "default"): meta2-12^ => /bar scroll buflist * +100%
+2020-11-14 14:46:28		New key binding (context "default"): meta2-12~ => /bar scroll buflist * +100%
+2020-11-14 14:46:28		New key binding (context "default"): meta2-11^ => /bar scroll buflist * -100%
+2020-11-14 14:46:28		New key binding (context "default"): meta2-11~ => /bar scroll buflist * -100%
+2020-11-14 14:46:29		Plugins loaded: alias, buflist, charset, exec, fifo, fset, guile, irc, logger, lua, perl, python, relay, script, spell, trigger, xfer
+2020-11-14 14:46:33		charset: terminal: UTF-8, internal: UTF-8
+2020-11-14 14:46:50		script: downloading list of scripts...
+2020-11-14 14:46:51		script: 364 scripts for WeeChat 2.9
+2020-11-14 14:46:52		perl: loading script "/home/craig/.weechat/perl/buffers.pl"
+2020-11-14 14:46:52		perl: registered script "buffers", version 5.7 (Sidebar with list of buffers)
+2020-11-14 14:46:52		New key binding (context "mouse"): @bar(buffers):ctrl-wheeldown => hsignal:buffers_mouse
+2020-11-14 14:46:52		New key binding (context "mouse"): @bar(buffers):ctrl-wheelup => hsignal:buffers_mouse
+2020-11-14 14:46:52		New key binding (context "mouse"): @item(buffers):button2* => hsignal:buffers_mouse
+2020-11-14 14:46:52		New key binding (context "mouse"): @item(buffers):button1* => hsignal:buffers_mouse
+2020-11-14 14:46:52	=!=	buflist: warning: the script buffers.pl is loaded and provides a bar with list of buffers similar to the buflist plugin; you may want to uninstall the script buffers.pl (/script remove buffers.pl) or disable/unload the buflist plugin; see WeeChat release notes for more information
+2020-11-14 14:46:53		python: loading script "/home/craig/.weechat/python/buffer_autoclose.py"
+2020-11-14 14:46:53		python: registered script "buffer_autoclose", version 0.5 (Automatically close inactive private message buffers)
+2020-11-14 14:46:53		perl: loading script "/home/craig/.weechat/perl/iset.pl"
+2020-11-14 14:46:53		perl: registered script "iset", version 4.4 (Interactive Set for configuration options)
+2020-11-14 14:46:53		New key binding (context "mouse"): @chat(perl.iset):button1 => hsignal:iset_mouse
+2020-11-14 14:46:53		New key binding (context "mouse"): @chat(perl.iset):button2* => hsignal:iset_mouse
+2020-11-14 14:46:53		New key binding (context "mouse"): @chat(perl.iset):wheeldown => /repeat 5 /iset **down
+2020-11-14 14:46:53		New key binding (context "mouse"): @chat(perl.iset):wheelup => /repeat 5 /iset **up
+2020-11-14 14:46:54		python: loading script "/home/craig/.weechat/python/go.py"
+2020-11-14 14:46:54		python: registered script "go", version 2.6 (Quick jump to buffers)
+2020-11-14 14:46:54		python: loading script "/home/craig/.weechat/python/colorize_nicks.py"
+2020-11-14 14:46:54		python: registered script "colorize_nicks", version 27 (Use the weechat nick colors in the chat area)
+2020-11-14 14:47:13		python: loading script "/home/craig/.weechat/python/histsearch.py"
+2020-11-14 14:47:13		python: registered script "histsearch", version 0.6 (Quick search in command history (think ctrl-r in bash))
+2020-11-14 14:47:13		perl: loading script "/home/craig/.weechat/perl/nickregain.pl"
+2020-11-14 14:47:13		perl: registered script "nickregain", version 1.1.1 (Auto Nick Regaining)
+2020-11-14 14:47:14		python: loading script "/home/craig/.weechat/python/shortenurl.py"
+2020-11-14 14:47:14		python: registered script "shortenurl", version 0.6.6 (Shorten long incoming and outgoing URLs)
+2020-11-14 14:47:18		python: scripts unloaded
+2020-11-14 14:47:18		perl: scripts unloaded
+2020-11-14 14:47:18		fifo: pipe closed
+2020-11-14 14:47:18	=!=	buflist: warning: the script buffers.pl is loaded and provides a bar with list of buffers similar to the buflist plugin; you may want to uninstall the script buffers.pl (/script remove buffers.pl) or disable/unload the buflist plugin; see WeeChat release notes for more information
+2020-11-14 14:47:19		perl scripts loaded: buffers, iset, nickregain
+2020-11-14 14:47:19		python scripts loaded: buffer_autoclose, colorize_nicks, go, histsearch, shortenurl
+2020-11-14 14:47:19		script: 364 scripts for WeeChat 2.9
+2020-11-14 14:47:19		Plugins loaded: alias, buflist, charset, exec, fifo, fset, guile, irc, logger, lua, perl, python, relay, script, spell, trigger, xfer
+2020-11-14 14:47:37		Option changed: weechat.bar.status.color_bg = 10  (default: blue)
+2020-11-14 14:47:45		Option changed: weechat.bar.title.color_bg = 10  (default: blue)
+2020-11-14 14:47:53		Option created: weechat.palette.196 = "lightred"  (default: "")
+2020-11-14 14:48:00		Option created: weechat.palette.130 = "brown"  (default: "")
+2020-11-14 14:48:04		Option created: weechat.palette.208 = "orange"  (default: "")
+2020-11-14 14:48:10		Option created: weechat.palette.3 = "yellow"  (default: "")
+2020-11-14 14:48:14		Option created: weechat.palette.113 = "green"  (default: "")
+2020-11-14 14:48:19		Option changed: weechat.palette.113 = "green"  (default: "")
+2020-11-14 14:48:24		Option created: weechat.palette.46 = "lightgreen"  (default: "")
+2020-11-14 14:48:29		Option created: weechat.palette.45 = "aqua"  (default: "")
+2020-11-14 14:48:33		Option created: weechat.palette.81 = "lightblue"  (default: "")
+2020-11-14 14:48:37		Option created: weechat.palette.135 = "purple"  (default: "")
+2020-11-14 14:48:42		Option created: weechat.palette.170 = "magenta"  (default: "")
+2020-11-14 14:48:45		Option created: weechat.palette.201 = "lightmagenta"  (default: "")
+2020-11-14 14:48:50		Option created: weechat.palette.39 = "cyan"  (default: "")
+2020-11-14 14:48:53		Option created: weechat.palette.51 = "lightcyan"  (default: "")
+2020-11-14 14:48:58		Notify changed for "core.weechat": "all" to "message"
+2020-11-14 14:48:58		Option changed: weechat.look.buffer_notify_default = message  (default: all)
+2020-11-14 14:49:02		Option changed: irc.look.smart_filter = on
+2020-11-14 14:49:06		Filter "irc_smart" added:
+2020-11-14 14:49:06		  [irc_smart] buffer: * / tags: irc_smart_filter / regex: * 
+2020-11-14 14:49:10		Filter "irc_join_names" added:
+2020-11-14 14:49:10		  [irc_join_names] buffer: * / tags: irc_366,irc_332,irc_333,irc_329,irc_324 / regex: * 
+2020-11-14 14:49:19		Option changed: weechat.look.prefix_same_nick = "⤷"  (default: "")
+2020-11-14 14:49:43		python: scripts unloaded
+2020-11-14 14:49:44		perl: scripts unloaded
+2020-11-14 14:49:44		fifo: pipe closed
+2020-11-14 14:55:24	=!=	buflist: warning: the script buffers.pl is loaded and provides a bar with list of buffers similar to the buflist plugin; you may want to uninstall the script buffers.pl (/script remove buffers.pl) or disable/unload the buflist plugin; see WeeChat release notes for more information
+2020-11-14 14:55:24		perl scripts loaded: buffers, iset, nickregain
+2020-11-14 14:55:25		python scripts loaded: buffer_autoclose, colorize_nicks, go, histsearch, shortenurl
+2020-11-14 14:55:25		script: 364 scripts for WeeChat 2.9
+2020-11-14 14:55:25		Plugins loaded: alias, buflist, charset, exec, fifo, fset, guile, irc, logger, lua, perl, python, relay, script, spell, trigger, xfer
+2020-11-14 14:55:33	=!=	Too few arguments for command "/query" (help on command: /help query)
+2020-11-14 14:56:33		python: scripts unloaded
+2020-11-14 14:56:33		perl: scripts unloaded
+2020-11-14 14:56:33		fifo: pipe closed
+2020-11-14 14:56:34	=!=	buflist: warning: the script buffers.pl is loaded and provides a bar with list of buffers similar to the buflist plugin; you may want to uninstall the script buffers.pl (/script remove buffers.pl) or disable/unload the buflist plugin; see WeeChat release notes for more information
+2020-11-14 14:56:34		perl scripts loaded: buffers, iset, nickregain
+2020-11-14 14:56:34		python scripts loaded: buffer_autoclose, colorize_nicks, go, histsearch, shortenurl
+2020-11-14 14:56:34		script: 364 scripts for WeeChat 2.9
+2020-11-14 14:56:34		Plugins loaded: alias, buflist, charset, exec, fifo, fset, guile, irc, logger, lua, perl, python, relay, script, spell, tcl, trigger, xfer
+2020-11-14 14:59:52		python: scripts unloaded
+2020-11-14 14:59:52		perl: scripts unloaded
+2020-11-14 14:59:52		fifo: pipe closed
+2020-11-14 14:59:53	=!=	buflist: warning: the script buffers.pl is loaded and provides a bar with list of buffers similar to the buflist plugin; you may want to uninstall the script buffers.pl (/script remove buffers.pl) or disable/unload the buflist plugin; see WeeChat release notes for more information
+2020-11-14 14:59:53		perl scripts loaded: buffers, iset, nickregain
+2020-11-14 14:59:54		python scripts loaded: buffer_autoclose, colorize_nicks, go, histsearch, matrix, shortenurl
+2020-11-14 14:59:54		script: 364 scripts for WeeChat 2.9
+2020-11-14 14:59:54		Plugins loaded: alias, buflist, charset, exec, fifo, fset, guile, irc, logger, lua, perl, python, relay, script, spell, tcl, trigger, xfer
+2020-11-14 15:00:33		python: scripts unloaded
+2020-11-14 15:00:33		perl: scripts unloaded
+2020-11-14 15:00:33		fifo: pipe closed
+2020-11-14 15:00:34	=!=	buflist: warning: the script buffers.pl is loaded and provides a bar with list of buffers similar to the buflist plugin; you may want to uninstall the script buffers.pl (/script remove buffers.pl) or disable/unload the buflist plugin; see WeeChat release notes for more information
+2020-11-14 15:00:34		perl scripts loaded: buffers, iset, nickregain
+2020-11-14 15:00:35		python scripts loaded: buffer_autoclose, colorize_nicks, go, histsearch, matrix, shortenurl
+2020-11-14 15:00:35		script: 364 scripts for WeeChat 2.9
+2020-11-14 15:00:35		Plugins loaded: alias, buflist, charset, exec, fifo, fset, guile, irc, logger, lua, perl, python, relay, ruby, script, spell, tcl, trigger, xfer
+2020-11-14 15:00:56		perl: unloading script "buffers"
+2020-11-14 15:00:56		perl: script removed: /home/craig/.weechat/perl/autoload/buffers.pl
+2020-11-14 15:00:56		perl: script removed: /home/craig/.weechat/perl/buffers.pl
+2020-11-14 15:01:10		python: scripts unloaded
+2020-11-14 15:01:10		perl: scripts unloaded
+2020-11-14 15:01:10		fifo: pipe closed
+2020-11-14 15:01:11		perl scripts loaded: iset, nickregain
+2020-11-14 15:01:11		python scripts loaded: buffer_autoclose, colorize_nicks, go, histsearch, matrix, shortenurl
+2020-11-14 15:01:11		script: 364 scripts for WeeChat 2.9
+2020-11-14 15:01:11		Plugins loaded: alias, buflist, charset, exec, fifo, fset, guile, irc, logger, lua, perl, python, relay, ruby, script, spell, tcl, trigger, xfer
+2020-11-14 15:03:06	=!=	You can not write text in this buffer
+2020-11-14 15:03:09		python: scripts unloaded
+2020-11-14 15:03:09		perl: scripts unloaded
+2020-11-14 15:03:09		fifo: pipe closed
+2020-11-14 15:04:21		perl scripts loaded: iset, nickregain
+2020-11-14 15:04:22		python scripts loaded: buffer_autoclose, colorize_nicks, go, histsearch, matrix, shortenurl
+2020-11-14 15:04:22		script: 364 scripts for WeeChat 2.9
+2020-11-14 15:04:22		Plugins loaded: alias, buflist, charset, exec, fifo, fset, guile, irc, logger, lua, perl, python, relay, ruby, script, spell, tcl, trigger, xfer
+2020-11-14 15:04:24		Key "meta-n" unbound (context: "default")
+2020-11-14 15:04:24		New key binding (context "default"): meta-n => /bar toggle nicklist
+2020-11-14 15:04:36		python: scripts unloaded
+2020-11-14 15:04:36		perl: scripts unloaded
+2020-11-14 15:04:36		fifo: pipe closed
+2020-11-14 15:06:43		perl scripts loaded: iset, nickregain
+2020-11-14 15:06:44		python scripts loaded: buffer_autoclose, colorize_nicks, go, histsearch, matrix, shortenurl
+2020-11-14 15:06:44		script: 364 scripts for WeeChat 2.9
+2020-11-14 15:06:44		Plugins loaded: alias, buflist, charset, exec, fifo, fset, guile, irc, logger, lua, perl, python, relay, ruby, script, spell, tcl, trigger, xfer
+2020-11-14 15:06:50		python: loading script "/home/craig/.weechat/python/autoload/weechat-matrix.py"
+2020-11-14 15:06:51	=!=	python: unable to register script "matrix" (another script already exists with this name)
+2020-11-14 15:06:51	=!=	python: function "register" not found (or failed) in file "/home/craig/.weechat/python/autoload/weechat-matrix.py"
+2020-11-14 15:07:08		python: scripts unloaded
+2020-11-14 15:07:08		perl: scripts unloaded
+2020-11-14 15:07:08		fifo: pipe closed
