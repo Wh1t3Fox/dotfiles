@@ -239,6 +239,17 @@ bindsym XF86MonBrightnessDown exec xbacklight -dec 10
 
 for_window [window_role="pop-up"] floating enable
 for_window [window_role="task_dialog"] floating enable
+for_window [class="Nitrogen"] floating enable
+for_window [class="Blueman-manager"] floating enable
+for_window [class="Pavucontrol"] floating enable
+for_window [class="ProtonMail Bridge"] floating enable
+for_window [class="Vmware"] floating enable
+
+assign [class="Firefox"] number 1
+assign [class="Thunderbird"] number 2
+assign [class="Alacritty"] number 3
+assign [class="Microsoft Teams - Preview"] number 4
+
 
 new_window none
 #############################
