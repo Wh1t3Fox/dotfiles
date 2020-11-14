@@ -2,4 +2,4 @@ README.md
 .cfg
 .ssh/id*
 .weechat/certs
-.weechat/matrix.conf
+.weechat/*.conf
