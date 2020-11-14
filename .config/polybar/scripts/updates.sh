@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
-BAR_ICON=""
-NOTIFY_ICON=""
+BAR_ICON=""
+NOTIFY_ICON="ﮮ"
 
 get_total_updates() { UPDATES=$(checkupdates 2>/dev/null | wc -l); }
 

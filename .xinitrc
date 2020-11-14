@@ -45,8 +45,6 @@ xset -b
 #nm-applet &
 
 #exec startxfce4
-#exec i3
+exec i3
 #sxhkd &
-exec bspwm
-
-
+#exec bspwm

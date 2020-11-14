@@ -1,0 +1,96 @@
+env:
+  TERM: 'xterm-256color'
+
+window:
+  dynamic_title: true
+  decorations: 'none'
+  padding:
+    x: 20
+    y: 20
+
+scrolling:
+  history: 10000
+
+font:
+  normal:
+    family: 'Iosevka'
+    style: 'Regular'
+
+  bold:
+    family: 'Iosevka'
+    style: 'Bold'
+
+  italic:
+    family: 'Iosevka'
+    style: 'Italic'
+
+  bold_italic:
+    family: 'Iosevka'
+    style: 'Bold Italic'
+
+  size: 10.0
+
+  offset:
+    x: 1
+    y: 0
+
+  glyph_offset:
+    x: 0
+    y: 0
+
+draw_bold_text_with_bright_colors: true
+
+colors:
+  primary:
+    background: '#1d1f21'
+    foreground: '#c5c8c6'
+    dim_foreground: '#828482'
+    bright_foreground: '#eaeaea'
+
+  normal:
+    black:   '#1d1f21'
+    red:     '#cc6666'
+    green:   '#b5bd68'
+    yellow:  '#f0c674'
+    blue:    '#81a2be'
+    magenta: '#b294bb'
+    cyan:    '#8abeb7'
+    white:   '#c5c8c6'
+
+  bright:
+    black:   '#666666'
+    red:     '#d54e53'
+    green:   '#b9ca4a'
+    yellow:  '#e7c547'
+    blue:    '#7aa6da'
+    magenta: '#c397d8'
+    cyan:    '#70c0b1'
+    white:   '#eaeaea'
+
+  dim:
+    black:   '#131415'
+    red:     '#864343'
+    green:   '#777c44'
+    yellow:  '#9e824c'
+    blue:    '#556a7d'
+    magenta: '#75617b'
+    cyan:    '#5b7d78'
+    white:   '#828482'
+
+background_opacity: 0.8
+
+selection:
+  semantic_escape_chars: ",│`|:\"' ()[]{}<>\t"
+  save_to_clipboard: true
+
+
+cursor:
+  style: 'Block'
+
+live_config_reload: true
+
+shell:
+  program: '/usr/bin/zsh'
+
+mouse:
+  hide_when_typing: false

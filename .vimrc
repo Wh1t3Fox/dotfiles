@@ -94,6 +94,9 @@ if &term =~ '256color'
   set t_ut=
 endif
 
+hi Normal guibg=NONE ctermbg=NONE
+hi NonText guibg=NONE ctermbg=NONE
+
 "" Disable the blinking cursor.
 set gcr=a:blinkon0
 set scrolloff=3
@@ -184,3 +187,4 @@ let g:airline#extensions#virtualenv#enabled = 1
 
 "*****************************************************************************
 "*****************************************************************************
+

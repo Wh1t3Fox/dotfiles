@@ -1,6 +1,6 @@
-if [[ ! -f $HOME/.config/antigen.zsh ]]; then
-    mkdir -p $HOME/.config/
-    curl -sSL -o $HOME/.config/antigen.zsh https://git.io/antigen
+if [[ ! -f ~/.config/antigen.zsh ]]; then
+    mkdir -p ~/.config
+    curl -sSL git.io/antigen > ~/.config/antigen.zsh
 fi
 
 source $HOME/.config/antigen.zsh
@@ -31,7 +31,7 @@ antigen theme denysdovhan/spaceship-prompt
 # Tell Antigen that you're done.
 antigen apply
 
-plugins=(archlinux docker docker-compose fzf git pip nmap sudo)
+plugins=(git docker docker-compose)
 
 # Start Exports
 export TERM='xterm-256color'
@@ -41,14 +41,17 @@ export XDG_CONFIG_HOME="$HOME/.config"
 export PATH="$HOME/bin:$HOME/.local/bin:$GOPATH/bin:$HOME/node_modules/.bin:$PATH"
 # End Exports
 
-alias please='sudo `fc -ln -1`'
-alias shred='shred -uzf'
-alias vi='/usr/bin/vim'
-alias dropped_pkts='journalctl -fk | grep "BLOCKED"'
 alias l='ls -hAltr'
 alias ll='ls -hltr'
+alias shred='shred -uzf'
+alias vi='/usr/bin/vim'
+alias please='sudo `fc -ln -1`'
+alias cp='rsync -avh --progress'
+alias dropped_pkts='journalctl -fk | grep "DROP"'
+alias dots="/usr/bin/env git --git-dir='$HOME/.dotfiles' --work-tree='$HOME'"
 
 # Start Functions
+
 function rshred() {
     find $1 -type f -exec shred -uzf {} \;
 }
@@ -60,8 +63,9 @@ tunle() {
     fi
 
     sudo docker pull retenet/tunle
-    sudo docker run -dit --rm --name tunle \
-        -v $HOME/vpn/:/tmp/vpn \
+    sudo docker run -dit --rm \
+        --name tunle_generic \
+        -v $HOME/vpn/user.ovpn:/tmp/vpn/user.ovpn \
         --device /dev/net/tun \
         --cap-drop all \
         --cap-add MKNOD \
@@ -79,10 +83,13 @@ spindra() {
 
     case "$1" in
         "tunle")
-            network="container:tunle"
+            network="container:tunle_generic"
             ;;
         "host")
             network="host"
+            ;;
+        "rete"|"retenet")
+            network="retenet"
             ;;
         *)
             network="bridge"
@@ -94,7 +101,7 @@ spindra() {
     sudo docker run -it --rm \
         --net=$network \
         -v /tmp/.X11-unix:/tmp/.X11-unix \
-        -v $HOME/spindra:/data \
+        -v /home/craig/spindra:/data \
         -e DISPLAY=$DISPLAY \
         --cap-add NET_ADMIN \
         --cap-add SYS_PTRACE \
@@ -116,56 +123,12 @@ BASE16_SHELL="$HOME/.config/base16-shell/"
     [ -s "$BASE16_SHELL/profile_helper.sh" ] && \
         eval "$("$BASE16_SHELL/profile_helper.sh")"
 
-typeset -g -A key
-
-key[Home]="${terminfo[khome]}"
-key[End]="${terminfo[kend]}"
-key[Insert]="${terminfo[kich1]}"
-key[Backspace]="${terminfo[kbs]}"
-key[Delete]="${terminfo[kdch1]}"
-key[Up]="${terminfo[kcuu1]}"
-key[Down]="${terminfo[kcud1]}"
-key[Left]="${terminfo[kcub1]}"
-key[Right]="${terminfo[kcuf1]}"
-key[PageUp]="${terminfo[kpp]}"
-key[PageDown]="${terminfo[knp]}"
-key[Shift-Tab]="${terminfo[kcbt]}"
-
-# setup key accordingly
-[[ -n "${key[Home]}"      ]] && bindkey -- "${key[Home]}"      beginning-of-line
-[[ -n "${key[End]}"       ]] && bindkey -- "${key[End]}"       end-of-line
-[[ -n "${key[Insert]}"    ]] && bindkey -- "${key[Insert]}"    overwrite-mode
-[[ -n "${key[Backspace]}" ]] && bindkey -- "${key[Backspace]}" backward-delete-char
-[[ -n "${key[Delete]}"    ]] && bindkey -- "${key[Delete]}"    delete-char
-[[ -n "${key[Up]}"        ]] && bindkey -- "${key[Up]}"        up-line-or-history
-[[ -n "${key[Down]}"      ]] && bindkey -- "${key[Down]}"      down-line-or-history
-[[ -n "${key[Left]}"      ]] && bindkey -- "${key[Left]}"      backward-char
-[[ -n "${key[Right]}"     ]] && bindkey -- "${key[Right]}"     forward-char
-[[ -n "${key[PageUp]}"    ]] && bindkey -- "${key[PageUp]}"    beginning-of-buffer-or-history
-[[ -n "${key[PageDown]}"  ]] && bindkey -- "${key[PageDown]}"  end-of-buffer-or-history
-[[ -n "${key[Shift-Tab]}" ]] && bindkey -- "${key[Shift-Tab]}" reverse-menu-complete
-
-# Finally, make sure the terminal is in application mode, when zle is
-# active. Only then are the values from $terminfo valid.
-if (( ${+terminfo[smkx]} && ${+terminfo[rmkx]} )); then
-	autoload -Uz add-zle-hook-widget
-	function zle_application_mode_start { echoti smkx }
-	function zle_application_mode_stop { echoti rmkx }
-	add-zle-hook-widget -Uz zle-line-init zle_application_mode_start
-	add-zle-hook-widget -Uz zle-line-finish zle_application_mode_stop
-fi
-
-
-autoload -Uz up-line-or-beginning-search down-line-or-beginning-search
-zle -N up-line-or-beginning-search
-zle -N down-line-or-beginning-search
-
-[[ -n "${key[Up]}"   ]] && bindkey -- "${key[Up]}"   up-line-or-beginning-search
-[[ -n "${key[Down]}" ]] && bindkey -- "${key[Down]}" down-line-or-beginning-search
-
-key[Control-Left]="${terminfo[kLFT5]}"
-key[Control-Right]="${terminfo[kRIT5]}"
-
-[[ -n "${key[Control-Left]}"  ]] && bindkey -- "${key[Control-Left]}"  backward-word
-[[ -n "${key[Control-Right]}" ]] && bindkey -- "${key[Control-Right]}" forward-word
-
+export PATH="$PATH:$HOME/.axiom/interact"
+source /home/craig/.axiom/functions/autocomplete.zsh
+compdef _axiom-ssh axiom-rm
+compdef _axiom-ssh axiom-ssh
+compdef _axiom-ssh axiom-select
+compdef _axiom-ssh axiom-backup
+compdef _axiom-ssh axiom-vpn
+compdef _axiom-restore axiom-restore
+compdef _axiom-deploy axiom-deploy
