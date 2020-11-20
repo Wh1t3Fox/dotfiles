@@ -245,9 +245,7 @@ for_window [class="Pavucontrol"] floating enable
 for_window [class="ProtonMail Bridge"] floating enable
 for_window [class="Vmware"] floating enable
 
-assign [class="Firefox"] number 1
 assign [class="Thunderbird"] number 2
-assign [class="Alacritty"] number 3
 assign [class="Microsoft Teams - Preview"] number 4
 
 
