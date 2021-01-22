@@ -1,4 +1,4 @@
-URxvt.font: 		xft:Iosevka:size=12
+URxvt.font: 		xft:SF Mono:size=12
 URxvt.scrollBar: 	false
 URxvt.perl-ext-common:resize-font
 URxvt.letterSpace: 	0
