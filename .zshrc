@@ -1,3 +1,10 @@
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block; everything else may go below.
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+
 if [[ ! -f ~/.config/antigen.zsh ]]; then
     mkdir -p ~/.config
     curl -sSL git.io/antigen > ~/.config/antigen.zsh
@@ -26,7 +33,8 @@ antigen bundle ael-code/zsh-colored-man-pages
 antigen bundle webyneter/docker-aliases.git
 antigen bundle unixorn/docker-helpers.zshplugin
 
-antigen theme denysdovhan/spaceship-prompt
+#antigen theme denysdovhan/spaceship-prompt
+antigen theme romkatv/powerlevel10k
 
 # Tell Antigen that you're done.
 antigen apply
@@ -132,3 +140,6 @@ compdef _axiom-ssh axiom-backup
 compdef _axiom-ssh axiom-vpn
 compdef _axiom-restore axiom-restore
 compdef _axiom-deploy axiom-deploy
+
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
