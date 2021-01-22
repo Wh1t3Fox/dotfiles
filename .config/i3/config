@@ -228,7 +228,7 @@ exec --no-startup-id protonmail-bridge
 exec --no-startup-id blueman-applet
 exec --no-startup-id nitrogen --restore
 exec --no-startup-id xset dpms 600
-exec_always --no-startup-id xrandr --output DVI-I-2 --right-of DVI-I-1 --primary
+exec_always --no-startup-id /bin/bash $HOME/.screenlayout/layout.sh
 
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 1 +5%
 bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 1 -5%
