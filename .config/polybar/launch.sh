@@ -12,7 +12,11 @@ export MONITORS=($(xrandr --query | grep ' connected ' | awk -F' ' '{print $1}')
 
 if [[ "${#MONITORS[@]}" -eq 1 ]]; then
     polybar -c ~/.config/polybar/config.ini single > /dev/null 2>&1 &!
-else
+elif [[ "${#MONITORS[@]}" -eq 2 ]]; then
     polybar -c ~/.config/polybar/config.ini left > /dev/null 2>&1 &!
     polybar -c ~/.config/polybar/config.ini right > /dev/null 2>&1 &!
+elif [[ "${#MONITORS[@]}" -eq 3 ]]; then
+    polybar -c ~/.config/polybar/config.ini left > /dev/null 2>&1 &!
+    polybar -c ~/.config/polybar/config.ini right > /dev/null 2>&1 &!
+    polybar -c ~/.config/polybar/config.ini bottom > /dev/null 2>&1 &!
 fi
