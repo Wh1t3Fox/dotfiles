@@ -12,6 +12,19 @@ fi
 
 source $HOME/.config/antigen.zsh
 
+### Fix slowness of pastes with zsh-syntax-highlighting.zsh
+pasteinit() {
+  OLD_SELF_INSERT=${${(s.:.)widgets[self-insert]}[2,3]}
+  zle -N self-insert url-quote-magic # I wonder if you'd need `.url-quote-magic`?
+}
+
+pastefinish() {
+  zle -N self-insert $OLD_SELF_INSERT
+}
+zstyle :bracketed-paste-magic paste-init pasteinit
+zstyle :bracketed-paste-magic paste-finish pastefinish
+### Fix slowness of pastes
+
 # Load the oh-my-zsh's library.
 antigen use oh-my-zsh
 
@@ -51,6 +64,7 @@ export PATH="$HOME/bin:$HOME/.local/bin:$GOPATH/bin:$HOME/node_modules/.bin:$PAT
 
 alias l='ls -hAltr'
 alias ll='ls -hltr'
+alias lS='ls -SAhlr'
 alias shred='shred -uzf'
 alias vi='/usr/bin/vim'
 alias please='sudo `fc -ln -1`'
@@ -59,6 +73,30 @@ alias dropped_pkts='journalctl -fk | grep "DROP"'
 alias dots="/usr/bin/env git --git-dir='$HOME/.dotfiles' --work-tree='$HOME'"
 
 # Start Functions
+
+rdp(){
+  local user host passwd
+  
+  host='localhost'
+  user='Administrator'
+
+  case $# in
+    1)
+      host="$1"
+    ;;
+    2)
+      host="$1"
+      user="$2"
+    ;;
+    3)
+      host="$1"
+      user="$2"
+      passwd="$3"
+    ;;
+  esac
+
+  xfreerdp /bpp:32 /gfx +aero +fonts /u:${user} /v:${host} /drive:Share,$HOME/Downloads
+}
 
 function rshred() {
     find $1 -type f -exec shred -uzf {} \;
