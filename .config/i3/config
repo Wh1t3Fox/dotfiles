@@ -221,13 +221,14 @@ exec --no-startup-id light-locker --no-late-locking &!
 bindsym Ctrl+$mod+l exec light-locker-command -l
 
 exec i3-config-wizard
-exec --no-startup-id exec picom -bcCGf -i 0.8 -e 0.8 --no-fading-openclose
+exec --no-startup-id exec picom -bcCGf -i 0.8 -e 0.8 --no-fading-openclose --config ~/.config/picom/picom.conf
 exec --no-startup-id exec xfce4-power-manager
 exec --no-startup-id nm-applet
 exec --no-startup-id protonmail-bridge
 exec --no-startup-id blueman-applet
 exec --no-startup-id nitrogen --restore
 exec --no-startup-id xset dpms 600
+exec --no-startup-id /usr/lib/geoclue-2.0/demos/agent
 exec_always --no-startup-id /bin/bash $HOME/.screenlayout/layout.sh
 
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 1 +5%
