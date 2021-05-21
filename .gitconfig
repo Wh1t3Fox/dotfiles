@@ -1,3 +1,6 @@
 [user]
 	email = dev@exploit.design
 	name = wh1t3fox
+	signingkey = CDC671267A8CE755
+[commit]
+	gpgsign = true
