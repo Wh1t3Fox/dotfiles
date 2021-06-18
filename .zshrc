@@ -60,6 +60,7 @@ export EDITOR='vim'
 export GOPATH=~/go
 export XDG_CONFIG_HOME="$HOME/.config"
 export PATH="$HOME/bin:$HOME/.local/bin:$GOPATH/bin:$HOME/node_modules/.bin:$PATH"
+export KUBECONFIG="$HOME/.kube/config"
 # End Exports
 
 alias l='ls -hAltr'
@@ -111,7 +112,7 @@ tunle() {
     sudo docker pull retenet/tunle
     sudo docker run -dit --rm \
         --name tunle_generic \
-        -v $HOME/vpn/user.ovpn:/tmp/vpn/user.ovpn \
+        -v $HOME/vpn/wh1t3fox-release.ovpn:/tmp/vpn/user.ovpn \
         --device /dev/net/tun \
         --cap-drop all \
         --cap-add MKNOD \
@@ -157,6 +158,10 @@ spindra() {
 amsi-bypass(){
     curl -sL https://amsi-fail.azurewebsites.net/api/Generate | grep -E '^[^#]'
 }
+
+pgrep(){
+  ps -efH | grep -v grep | grep -i "$1"
+}
 # End Functions
 
 # Shell theme
@@ -168,16 +173,6 @@ BASE16_SHELL="$HOME/.config/base16-shell/"
 [ -n "$PS1" ] && \
     [ -s "$BASE16_SHELL/profile_helper.sh" ] && \
         eval "$("$BASE16_SHELL/profile_helper.sh")"
-
-export PATH="$PATH:$HOME/.axiom/interact"
-source /home/craig/.axiom/functions/autocomplete.zsh
-compdef _axiom-ssh axiom-rm
-compdef _axiom-ssh axiom-ssh
-compdef _axiom-ssh axiom-select
-compdef _axiom-ssh axiom-backup
-compdef _axiom-ssh axiom-vpn
-compdef _axiom-restore axiom-restore
-compdef _axiom-deploy axiom-deploy
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
