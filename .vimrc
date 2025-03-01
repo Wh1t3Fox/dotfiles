@@ -34,6 +34,7 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'airblade/vim-gitgutter'
 Plug 'scrooloose/syntastic'
+Plug 'madox2/vim-ai'
 
 "" Color
 Plug 'chriskempson/base16-vim'
@@ -82,9 +83,11 @@ set nowrap
 
 let no_buffers_menu=1
 if !exists('g:not_finish_vimplug')
-  colorscheme base16-tomorrow-night
+  colorscheme base16-tomorrow-night-eighties
   let base16colorspace=256
 endif
+  colorscheme base16-tomorrow-night-eighties
+  let base16colorspace=256
 
 set t_Co=256
 
@@ -188,3 +191,73 @@ let g:airline#extensions#virtualenv#enabled = 1
 "*****************************************************************************
 "*****************************************************************************
 
+"*****************************************************************************
+" AI
+"*****************************************************************************
+
+let s:vim_ai_endpoint_url = "https://chatgpt.west.cafe/api/chat/completions"
+
+let s:vim_ai_model = "llama3.2:3b"
+let s:vim_ai_temperature = 0.3
+
+let s:vim_ai_chat_prompt =<< trim END
+>>> system
+
+You are a helpful code assistant.
+
+Assume that all unknown symbols are properly initialized elsewhere.
+
+Add a syntax type after ``` to enable proper syntax highlighting in fenced code blocks.
+END
+
+let s:vim_ai_edit_prompt =<< trim END
+>>> system
+
+You will act as a code generator.
+
+Do not write any introduction, conclusion, or explanation.
+
+Do not use fenced code blocks.
+
+Respect the original indentation level.
+END
+
+let s:vim_ai_chat_config = #{
+\  engine: "chat",
+\  options: #{
+\    model: s:vim_ai_model,
+\    initial_prompt: s:vim_ai_chat_prompt,
+\    temperature: s:vim_ai_temperature,
+\    endpoint_url: s:vim_ai_endpoint_url,
+\    enable_auth: 0,
+\    max_tokens: 0,
+\    request_timeout: 60,
+\  },
+\  ui: #{
+\    code_syntax_enabled: 1,
+\  },
+\}
+
+let s:vim_ai_edit_config = #{
+\  engine: "chat",
+\  options: #{
+\    model: s:vim_ai_model,
+\    initial_prompt: s:vim_ai_edit_prompt,
+\    temperature: s:vim_ai_temperature,
+\    endpoint_url: s:vim_ai_endpoint_url,
+\    enable_auth: 0,
+\    max_tokens: 0,
+\    request_timeout: 60,
+\  },
+\  ui: #{
+\    paste_mode: 1,
+\  },
+\}
+
+let g:vim_ai_chat = s:vim_ai_chat_config
+let g:vim_ai_complete = s:vim_ai_edit_config
+let g:vim_ai_edit = s:vim_ai_edit_config
+
+
+"*****************************************************************************
+"*****************************************************************************
