@@ -45,6 +45,10 @@ xset -b
 #nm-applet &
 
 #exec startxfce4
+xrdb -merge ~/.Xresources
+xrandr --output eDP-1 --mode 2880x1800 --scale 1x1 --dpi 120
+
+
 exec i3
 #sxhkd &
 #exec bspwm
