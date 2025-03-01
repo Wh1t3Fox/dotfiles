@@ -1,4 +1,7 @@
-URxvt.font: 		xft:SF Mono:size=12
+Xft.dpi: 120
+
+!URxvt.font: 		xft:Iosevka Nerd Font Mono Regular:size=12
+URxvt.font: 		xft:SF Pro Regular:size=12
 URxvt.scrollBar: 	false
 URxvt.perl-ext-common:resize-font
 URxvt.letterSpace: 	0
@@ -17,27 +20,37 @@ Urxvt.keysym.Control-L:	command:\033c
 URxvt.depth:				32
 URxvt.internalBorder:		5
 
-! Base16 Tomorrow Night
-! Scheme: Chris Kempson (http://chriskempson.com)
+! These might also be useful depending on your monitor and personal preference:
+Xft.autohint: 0
+Xft.lcdfilter:  lcddefault
+Xft.hintstyle:  hintfull
+Xft.hinting: 1
+Xft.antialias: 1
+Xft.rgba: rgb
 
-#define background_opacity 80
+!#define background_opacity 80
 
-#define base00 #1d1f21
-#define base01 #282a2e
-#define base02 #373b41
-#define base03 #969896
+! base16 Tomorrow Night Eighties
+! Scheme author: Chris Kempson (http://chriskempson.com)
+
+#define base00 #222d2d2d
+#define base01 #393939
+#define base02 #515151
+#define base03 #999999
 #define base04 #b4b7b4
-#define base05 #c5c8c6
+#define base05 #cccccc
 #define base06 #e0e0e0
 #define base07 #ffffff
-#define base08 #cc6666
-#define base09 #de935f
-#define base0A #f0c674
-#define base0B #b5bd68
-#define base0C #8abeb7
-#define base0D #81a2be
-#define base0E #b294bb
+#define base08 #f2777a
+#define base09 #f99157
+#define base0A #ffcc66
+#define base0B #99cc99
+#define base0C #66cccc
+#define base0D #6699cc
+#define base0E #cc99cc
 #define base0F #a3685a
+
+#define border #6699cc
 
 *foreground:   base05
 #ifdef background_opacity
@@ -56,7 +69,7 @@ URxvt.internalBorder:		5
 *color6:       base0C
 *color7:       base05
 
-*color8:       base03
+*color8:       base02
 *color9:       base08
 *color10:      base0B
 *color11:      base0A
@@ -73,4 +86,6 @@ URxvt.internalBorder:		5
 *color19:      base02
 *color20:      base04
 *color21:      base06
+*color22:      base03
 
+*border:       border
