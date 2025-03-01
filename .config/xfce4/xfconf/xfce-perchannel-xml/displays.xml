@@ -5,7 +5,7 @@
     <property name="eDP-0" type="string" value="1. AU Optronics 14&quot;">
       <property name="Active" type="bool" value="true"/>
       <property name="Resolution" type="string" value="1920x1080"/>
-      <property name="RefreshRate" type="double" value="60.049471"/>
+      <property name="RefreshRate" type="double" value="60.049470999999997"/>
       <property name="Rotation" type="int" value="0"/>
       <property name="Reflection" type="string" value="0"/>
       <property name="Primary" type="bool" value="false"/>
@@ -17,7 +17,7 @@
     <property name="HDMI-1" type="string" value="2. Ancor Communications Inc 23&quot;">
       <property name="Active" type="bool" value="true"/>
       <property name="Resolution" type="string" value="1920x1080"/>
-      <property name="RefreshRate" type="double" value="60.000000"/>
+      <property name="RefreshRate" type="double" value="60"/>
       <property name="Rotation" type="int" value="0"/>
       <property name="Reflection" type="string" value="0"/>
       <property name="Primary" type="bool" value="false"/>
@@ -29,7 +29,7 @@
     <property name="eDP1" type="string" value="Laptop">
       <property name="Active" type="bool" value="true"/>
       <property name="Resolution" type="string" value="1920x1080"/>
-      <property name="RefreshRate" type="double" value="60.049471"/>
+      <property name="RefreshRate" type="double" value="60.049470999999997"/>
       <property name="Rotation" type="int" value="0"/>
       <property name="Reflection" type="string" value="0"/>
       <property name="Primary" type="bool" value="false"/>
@@ -41,7 +41,7 @@
     <property name="HDMI2" type="string" value="2. Philips 29&quot;">
       <property name="Active" type="bool" value="true"/>
       <property name="Resolution" type="string" value="1920x1080"/>
-      <property name="RefreshRate" type="double" value="60.000000"/>
+      <property name="RefreshRate" type="double" value="60"/>
       <property name="Rotation" type="int" value="0"/>
       <property name="Reflection" type="string" value="0"/>
       <property name="Primary" type="bool" value="false"/>
@@ -50,7 +50,43 @@
         <property name="Y" type="int" value="0"/>
       </property>
     </property>
+    <property name="eDP-1" type="string" value="Laptop">
+      <property name="Active" type="bool" value="true"/>
+      <property name="EDID" type="string" value="6993f8d13c194d21274b0c461eac4f4991881f97"/>
+      <property name="Resolution" type="string" value="2880x1800"/>
+      <property name="RefreshRate" type="double" value="60.000800908667287"/>
+      <property name="Rotation" type="int" value="0"/>
+      <property name="Reflection" type="string" value="0"/>
+      <property name="Primary" type="bool" value="true"/>
+      <property name="Scale" type="empty">
+        <property name="X" type="double" value="1"/>
+        <property name="Y" type="double" value="1"/>
+      </property>
+      <property name="Position" type="empty">
+        <property name="X" type="int" value="0"/>
+        <property name="Y" type="int" value="0"/>
+      </property>
+    </property>
   </property>
   <property name="Notify" type="bool" value="true"/>
   <property name="ActiveProfile" type="string" value="Default"/>
+  <property name="Fallback" type="empty">
+    <property name="eDP-1" type="string" value="Laptop">
+      <property name="Active" type="bool" value="true"/>
+      <property name="EDID" type="string" value="6993f8d13c194d21274b0c461eac4f4991881f97"/>
+      <property name="Resolution" type="string" value="2880x1800"/>
+      <property name="RefreshRate" type="double" value="60.000800908667287"/>
+      <property name="Rotation" type="int" value="0"/>
+      <property name="Reflection" type="string" value="0"/>
+      <property name="Primary" type="bool" value="true"/>
+      <property name="Scale" type="empty">
+        <property name="X" type="double" value="1"/>
+        <property name="Y" type="double" value="1"/>
+      </property>
+      <property name="Position" type="empty">
+        <property name="X" type="int" value="0"/>
+        <property name="Y" type="int" value="0"/>
+      </property>
+    </property>
+  </property>
 </channel>
