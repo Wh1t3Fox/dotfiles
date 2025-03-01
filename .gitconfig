@@ -1,6 +1,19 @@
 [user]
-	email = dev@exploit.design
-	name = wh1t3fox
-	signingkey = CDC671267A8CE755
+  email = dev@exploit.design
+  name = wh1t3fox
+  signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDs5GwFhPMSe+gLZOmFgqPwNFRuxNob0bd07curuZOzm
+
+[gpg]
+  format = ssh
+
+[gpg "ssh"]
+  program = "/opt/1Password/op-ssh-sign"
+
 [commit]
-	gpgsign = true
+  gpgsign = true
+
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
