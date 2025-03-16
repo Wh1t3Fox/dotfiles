@@ -51,7 +51,7 @@ antigen theme romkatv/powerlevel10k
 # Tell Antigen that you're done.
 antigen apply
 
-plugins=(git docker docker-compose)
+plugins=(archlinux git docker docker-compose 1password)
 
 # Start Exports
 export TERM='xterm-256color'
