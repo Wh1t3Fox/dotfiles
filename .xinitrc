@@ -46,7 +46,10 @@ xset -b
 
 #exec startxfce4
 xrdb -merge ~/.Xresources
-xrandr --output eDP-1 --mode 2880x1800 --scale 1x1 --dpi 120
+
+if [ "$HOST" -eq "archi" ]; then
+    xrandr --output 'eDP-1' --mode '2880x1800' --scale '0.75x0.75' --dpi '120'
+fi
 
 
 exec i3
