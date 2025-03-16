@@ -35,6 +35,8 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'airblade/vim-gitgutter'
 Plug 'scrooloose/syntastic'
 Plug 'madox2/vim-ai'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
 
 "" Color
 Plug 'chriskempson/base16-vim'

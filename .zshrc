@@ -206,3 +206,5 @@ export FZF_DEFAULT_OPTS="$FZF_DEFAULT_OPTS"\
 }
 
 _gen_fzf_default_opts
+# Set up fzf key bindings and fuzzy completion
+source <(fzf --zsh)
