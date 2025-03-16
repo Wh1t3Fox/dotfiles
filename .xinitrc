@@ -38,13 +38,6 @@ xsetroot -cursor_name left_ptr
 
 xset -b
 
-#compton &
-#dunst &
-#nitrogen --restore &
-#redshift &
-#nm-applet &
-
-#exec startxfce4
 xrdb -merge ~/.Xresources
 
 if [ "$HOST" -eq "archi" ]; then
@@ -52,6 +45,5 @@ if [ "$HOST" -eq "archi" ]; then
 fi
 
 
+# i3-gaps
 exec i3
-#sxhkd &
-#exec bspwm
