@@ -27,13 +27,12 @@ call plug#begin(expand('~/.vim/plugged'))
 "*****************************************************************************
 "" Plug install packages
 "*****************************************************************************
-Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' }
+Plug 'dense-analysis/ale'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'airblade/vim-gitgutter'
-Plug 'scrooloose/syntastic'
 Plug 'madox2/vim-ai'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
@@ -198,6 +197,7 @@ let g:airline#extensions#virtualenv#enabled = 1
 "*****************************************************************************
 
 let s:vim_ai_endpoint_url = "https://chat.ai.west.cafe/api/chat/completions"
+
 let s:vim_ai_model = "qwen2.5-coder:14b"
 let s:vim_ai_temperature = 0.3
 
