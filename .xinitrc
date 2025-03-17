@@ -42,6 +42,8 @@ xrdb -merge ~/.Xresources
 
 if [ "$HOST" -eq "archi" ]; then
     xrandr --output 'eDP-1' --mode '2880x1800' --scale '0.75x0.75' --dpi '120'
+elif [ "$HOST" -eq "rchy" ]; then
+    xrandr --output 'DP-2' --mode '3440x1440' --pos '0x0' --rotate 'normal' --output 'DP-4' --mode '1920x1080' --pos '3440x0' --rotate 'normal'
 fi
 
 
