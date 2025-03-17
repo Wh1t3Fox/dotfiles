@@ -197,9 +197,8 @@ let g:airline#extensions#virtualenv#enabled = 1
 " AI
 "*****************************************************************************
 
-let s:vim_ai_endpoint_url = "https://chatgpt.west.cafe/api/chat/completions"
-
-let s:vim_ai_model = "llama3.2:3b"
+let s:vim_ai_endpoint_url = "https://chat.ai.west.cafe/api/chat/completions"
+let s:vim_ai_model = "qwen2.5-coder:14b"
 let s:vim_ai_temperature = 0.3
 
 let s:vim_ai_chat_prompt =<< trim END
