@@ -45,8 +45,8 @@ antigen bundle unixorn/autoupdate-antigen.zshplugin
 antigen bundle ael-code/zsh-colored-man-pages
 antigen bundle webyneter/docker-aliases.git
 
-#antigen theme denysdovhan/spaceship-prompt
-antigen theme romkatv/powerlevel10k
+antigen theme spaceship-prompt/spaceship-prompt
+#antigen theme romkatv/powerlevel10k
 
 # Tell Antigen that you're done.
 antigen apply
