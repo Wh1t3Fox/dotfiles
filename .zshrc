@@ -46,7 +46,6 @@ antigen bundle ael-code/zsh-colored-man-pages
 antigen bundle webyneter/docker-aliases.git
 
 antigen theme spaceship-prompt/spaceship-prompt
-#antigen theme romkatv/powerlevel10k
 
 # Tell Antigen that you're done.
 antigen apply
@@ -164,14 +163,10 @@ if [[ ! -d ~/.config/base16-shell ]]; then
 fi
 
 # Base16 Shell
-BASE16_SHELL="$HOME/.config/base16-shell/"
+BASE16_SHELL="$HOME/.config/base16-shell"
 [ -n "$PS1" ] && \
     [ -s "$BASE16_SHELL/profile_helper.sh" ] && \
         source "$BASE16_SHELL/profile_helper.sh"
-
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-
 
 # fzf colors
 # Scheme name: Tomorrow Night Eighties
