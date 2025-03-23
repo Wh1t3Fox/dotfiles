@@ -40,6 +40,7 @@ xset -b
 
 xrdb -merge ~/.Xresources
 
+HOST="$(cat /etc/hostname)"
 if [ "$HOST" -eq "archi" ]; then
     xrandr --output 'eDP-1' --mode '2880x1800' --scale '0.75x0.75' --dpi '120'
 elif [ "$HOST" -eq "rchy" ]; then
