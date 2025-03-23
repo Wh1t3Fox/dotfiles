@@ -33,7 +33,7 @@ Xft.rgba: rgb
 ! base16 Tomorrow Night Eighties
 ! Scheme author: Chris Kempson (http://chriskempson.com)
 
-#define base00 #222d2d2d
+#define base00 #2d2d2d
 #define base01 #393939
 #define base02 #515151
 #define base03 #999999
