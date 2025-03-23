@@ -2,18 +2,12 @@
 SPACESHIP_PROMPT_ORDER=(
     time 
     user 
-    dir 
     host 
+    dir 
     git
-    package 
     python 
-    golang 
-    rust 
-    kotlin 
-    java 
     docker 
     aws 
-    kubectl 
     ansible 
     terraform 
     exec_time 
