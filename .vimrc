@@ -33,9 +33,11 @@ Plug 'tpope/vim-fugitive'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'airblade/vim-gitgutter'
-Plug 'madox2/vim-ai'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
+
+"Plug 'madox2/vim-ai'
+Plug 'gergap/vim-ollama'
 
 "" Color
 Plug 'chriskempson/base16-vim'
@@ -193,9 +195,8 @@ let g:airline#extensions#virtualenv#enabled = 1
 "*****************************************************************************
 
 "*****************************************************************************
-" AI
+" Vim-AI
 "*****************************************************************************
-
 let s:vim_ai_endpoint_url = "https://ollama.ai.west.cafe/v1/chat/completions"
 let s:vim_ai_model = "qwen2.5-coder:14b"
 let s:vim_ai_temperature = 0.3
