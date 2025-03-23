@@ -38,12 +38,29 @@ antigen bundle unixorn/autoupdate-antigen.zshplugin
 antigen bundle ael-code/zsh-colored-man-pages
 antigen bundle webyneter/docker-aliases.git
 
+
 antigen theme spaceship-prompt/spaceship-prompt
 
 # Tell Antigen that you're done.
 antigen apply
 
-plugins=(archlinux git docker docker-compose 1password)
+plugins=(
+    1password
+    archlinux
+    aws
+    docker
+    docker-compose
+    extract
+    fzf
+    git
+    pip
+    pyenv
+    python
+    ssh
+    ssh-agent
+    terraform
+    tmux
+)
 
 # Start Exports
 export TERM='xterm-256color'
