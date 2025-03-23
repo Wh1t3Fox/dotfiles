@@ -196,8 +196,7 @@ let g:airline#extensions#virtualenv#enabled = 1
 " AI
 "*****************************************************************************
 
-let s:vim_ai_endpoint_url = "https://chat.ai.west.cafe/api/chat/completions"
-
+let s:vim_ai_endpoint_url = "https://ollama.ai.west.cafe/v1/chat/completions"
 let s:vim_ai_model = "qwen2.5-coder:14b"
 let s:vim_ai_temperature = 0.3
 
@@ -226,11 +225,11 @@ END
 let s:vim_ai_chat_config = #{
 \  engine: "chat",
 \  options: #{
+\    auth_type: "none",
 \    model: s:vim_ai_model,
 \    initial_prompt: s:vim_ai_chat_prompt,
 \    temperature: s:vim_ai_temperature,
 \    endpoint_url: s:vim_ai_endpoint_url,
-\    enable_auth: 0,
 \    max_tokens: 0,
 \    request_timeout: 60,
 \  },
@@ -242,11 +241,11 @@ let s:vim_ai_chat_config = #{
 let s:vim_ai_edit_config = #{
 \  engine: "chat",
 \  options: #{
+\    auth_type: "none",
 \    model: s:vim_ai_model,
 \    initial_prompt: s:vim_ai_edit_prompt,
 \    temperature: s:vim_ai_temperature,
 \    endpoint_url: s:vim_ai_endpoint_url,
-\    enable_auth: 0,
 \    max_tokens: 0,
 \    request_timeout: 60,
 \  },
