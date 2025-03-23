@@ -66,15 +66,6 @@ plugins=(
     vi-mode
 )
 
-# Start Exports
-export TERM='xterm-256color'
-export EDITOR='vim'
-export GOPATH=~/go
-export XDG_CONFIG_HOME="$HOME/.config"
-export PATH="$HOME/bin:$HOME/.local/bin:$GOPATH/bin:$HOME/node_modules/.bin:$PATH:$HOME/.cargo/bin"
-export KUBECONFIG="$HOME/.kube/config"
-export SSH_AUTH_SOCK=~/.1password/agent.sock
-# End Exports
 
 alias l='ls -hAltr'
 alias ll='ls -hltr'
