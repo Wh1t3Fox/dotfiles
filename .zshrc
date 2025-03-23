@@ -60,6 +60,7 @@ plugins=(
     ssh-agent
     terraform
     tmux
+    vi-mode
 )
 
 # Start Exports
