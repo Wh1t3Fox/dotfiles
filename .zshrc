@@ -41,13 +41,13 @@ antigen bundle webyneter/docker-aliases.git
 
 antigen theme spaceship-prompt/spaceship-prompt
 
-# hotfix for spaceship async
-if ! $(sed '30!d' $HOME/.antigen/bundles/spaceship-prompt/spaceship-prompt/async.zsh | grep -q -o 'sleep'); then
-    sed -i '30i \\tsleep 0.01' $HOME/.antigen/bundles/spaceship-prompt/spaceship-prompt/async.zsh
-fi
-
 # Tell Antigen that you're done.
 antigen apply
+
+# hotfix for spaceship async
+if ! $(sed '30!d' $HOME/.antigen/bundles/spaceship-prompt/spaceship-prompt/async.zsh | grep -q -o 'sleep'); then
+    sed -i '30i \\tsleep 0.05' $HOME/.antigen/bundles/spaceship-prompt/spaceship-prompt/async.zsh
+fi
 
 plugins=(
     1password
