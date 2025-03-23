@@ -27,6 +27,7 @@ call plug#begin(expand('~/.vim/plugged'))
 "*****************************************************************************
 "" Plug install packages
 "*****************************************************************************
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'dense-analysis/ale'
 Plug 'tpope/vim-fugitive'
 Plug 'vim-airline/vim-airline'
@@ -34,6 +35,7 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'airblade/vim-gitgutter'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
+Plug 'preservim/nerdtree'
 
 "Plug 'madox2/vim-ai'
 Plug 'gergap/vim-ollama'
@@ -176,9 +178,20 @@ let g:airline#extensions#tagbar#enabled = 1
 let g:airline_skip_empty_sections = 1
 
 " ale
-let g:ale_completion_enabled = 1
-let g:ale_linters = {'python': ['ruff']}
+let g:ale_disable_lsp = 1
+let g:ale_completion_enabled = 0
+let g:ale_linters = {'python': ['pyright', 'ruff']}
 let g:ale_fixers = {'python': ['black']}
+
+" coc
+let g:coc_global_extensions = ['coc-pyright', 'coc-json']
+
+" NerdTree
+nnoremap <leader>n :NERDTreeFocus<CR>
+nnoremap <C-n> :NERDTree<CR>
+nnoremap <C-t> :NERDTreeToggle<CR>
+nnoremap <C-f> :NERDTreeFind<CR>
+
 
 "*****************************************************************************
 " Vim-AI
