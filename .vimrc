@@ -37,8 +37,8 @@ Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'preservim/nerdtree'
 
-"Plug 'madox2/vim-ai'
-Plug 'gergap/vim-ollama'
+Plug 'madox2/vim-ai'
+"Plug 'gergap/vim-ollama'
 
 "" Color
 Plug 'chriskempson/base16-vim'
@@ -356,67 +356,79 @@ nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
 " Vim-AI
 "*****************************************************************************
 let s:vim_ai_endpoint_url = "https://ollama.ai.west.cafe/v1/chat/completions"
-let s:vim_ai_model = "qwen2.5-coder:14b"
-let s:vim_ai_temperature = 0.3
 
-let s:vim_ai_chat_prompt =<< trim END
+let s:initial_complete_prompt =<< trim END
 >>> system
 
-You are a helpful code assistant.
-
-Assume that all unknown symbols are properly initialized elsewhere.
-
-Add a syntax type after ``` to enable proper syntax highlighting in fenced code blocks.
+You are a general assistant.
+Answer shortly, consisely and only what you are asked.
+Do not provide any explanantion or comments if not requested.
+If you answer in a code, do not wrap it in markdown code block.
 END
+let g:vim_ai_complete = {
+\  "engine": "chat",
+\  "options": {
+\    "model": "starcoder2:3b",
+\    "initial_prompt": s:initial_complete_prompt,
+\    "max_tokens": 0,
+\    "temperature": 0.1,
+\    "request_timeout": 20,
+\    "endpoint_url": s:vim_ai_endpoint_url,
+\    "auth_type": "none",
+\  },
+\  "ui": {
+\    "paste_mode": 1,
+\  },
+\}
 
 let s:vim_ai_edit_prompt =<< trim END
 >>> system
 
 You will act as a code generator.
-
 Do not write any introduction, conclusion, or explanation.
-
 Do not use fenced code blocks.
-
 Respect the original indentation level.
 END
-
-let s:vim_ai_chat_config = #{
-\  engine: "chat",
-\  options: #{
-\    auth_type: "none",
-\    model: s:vim_ai_model,
-\    initial_prompt: s:vim_ai_chat_prompt,
-\    temperature: s:vim_ai_temperature,
-\    endpoint_url: s:vim_ai_endpoint_url,
-\    max_tokens: 0,
-\    request_timeout: 60,
+let g:vim_ai_edit = {
+\  "engine": "chat",
+\  "options": {
+\    "model": "qwen2.5-coder:3b",
+\    "initial_prompt": s:vim_ai_edit_prompt,
+\    "temperature": 1,
+\    "max_tokens": 0,
+\    "request_timeout": 60,
+\    "endpoint_url": s:vim_ai_endpoint_url,
+\    "auth_type": "none",
 \  },
-\  ui: #{
-\    code_syntax_enabled: 1,
-\  },
-\}
-
-let s:vim_ai_edit_config = #{
-\  engine: "chat",
-\  options: #{
-\    auth_type: "none",
-\    model: s:vim_ai_model,
-\    initial_prompt: s:vim_ai_edit_prompt,
-\    temperature: s:vim_ai_temperature,
-\    endpoint_url: s:vim_ai_endpoint_url,
-\    max_tokens: 0,
-\    request_timeout: 60,
-\  },
-\  ui: #{
-\    paste_mode: 1,
+\  "ui": {
+\    "paste_mode": 1,
 \  },
 \}
 
-let g:vim_ai_chat = s:vim_ai_chat_config
-let g:vim_ai_complete = s:vim_ai_edit_config
-let g:vim_ai_edit = s:vim_ai_edit_config
 
+let s:vim_ai_chat_prompt =<< trim END
+>>> system
+
+You are a helpful code assistant.
+Assume that all unknown symbols are properly initialized elsewhere.
+Add a syntax type after ``` to enable proper syntax highlighting in fenced code blocks.
+END
+
+let g:vim_ai_chat = {
+\  "engine": "chat",
+\  "options": {
+\    "model": "llama3.1:8b",
+\    "initial_prompt": s:vim_ai_chat_prompt,
+\    "temperature": 1,
+\    "max_tokens": 0,
+\    "request_timeout": 60,
+\    "endpoint_url": s:vim_ai_endpoint_url,
+\    "auth_type": "none",
+\  },
+\  "ui": {
+\    "code_syntax_enabled": 1,
+\  },
+\}
 
 "*****************************************************************************
 "*****************************************************************************
