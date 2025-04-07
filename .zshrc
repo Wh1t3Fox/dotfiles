@@ -66,7 +66,6 @@ plugins=(
     vi-mode
 )
 
-
 alias l='ls -hAltr'
 alias ll='ls -hltr'
 alias lS='ls -SAhlr'
@@ -74,93 +73,93 @@ alias shred='shred -uzf'
 alias vi='/usr/bin/vim'
 alias please='sudo `fc -ln -1`'
 alias dropped_pkts='journalctl -fk | grep "DROP"'
-alias python='python3'
 
 # Start Functions
-
-rdp(){
-  local user host passwd
-  
-  host='localhost'
-  user='Administrator'
-
-  case $# in
-    1)
-      host="$1"
-    ;;
-    2)
-      host="$1"
-      user="$2"
-    ;;
-    3)
-      host="$1"
-      user="$2"
-      passwd="$3"
-    ;;
-  esac
-
-  xfreerdp /bpp:32 /gfx +aero +fonts /u:${user} /v:${host} /drive:Share,$HOME/Downloads
-}
-
-function rshred() {
+rshred() {
     find $1 -type f -exec shred -uzf {} \;
-}
-
-tunle() {
-    if [ ! -d $HOME/vpn ]; then
-        echo "$HOME/vpn does not exist."
-        return 1
-    fi
-
-    sudo docker pull retenet/tunle
-    sudo docker run -dit --rm \
-        --name tunle_generic \
-        -v $HOME/vpn/wh1t3fox-release.ovpn:/tmp/vpn/user.ovpn \
-        --device /dev/net/tun \
-        --cap-drop all \
-        --cap-add MKNOD \
-        --cap-add SETUID \
-        --cap-add SETGID \
-        --cap-add NET_ADMIN \
-        --cap-add NET_RAW \
-        retenet/tunle
-
-    # Check for tunle errors.
-}
-
-spindra() {
-    local network img
-
-    case "$1" in
-        "tunle")
-            network="container:tunle_generic"
-            ;;
-        "host")
-            network="host"
-            ;;
-        "rete"|"retenet")
-            network="retenet"
-            ;;
-        *)
-            network="bridge"
-            ;;
-
-    esac
-
-    sudo docker pull wh1t3f0x/spindra
-    sudo docker run -it --rm \
-        --net=$network \
-        -v /tmp/.X11-unix:/tmp/.X11-unix \
-        -v /home/craig/spindra:/data \
-        -e DISPLAY=$DISPLAY \
-        --cap-add NET_ADMIN \
-        --cap-add SYS_PTRACE \
-        wh1t3f0x/spindra
 }
 
 pgrep(){
   ps -efH | grep -v grep | grep -i "$1"
 }
+
+#--- BEGIN SSH Helpers ---
+# https://man.openbsd.org/ssh_config.5#TOKENS
+SOCKET_PATH_DIR="${HOME}/.ssh/sockets"
+SOCKET_PATH_FILE="${SOCKET_PATH_DIR}/%C"
+
+ssh_socket_create(){
+    local SSH_HOST
+    SSH_HOST=$1
+
+    if [ "$#" -ne 1 ]; then
+        echo "ssh_socket_create <hostname>"
+        return
+    fi
+
+    if [ ! -d "${SOCKET_PATH_DIR}" ]; then
+        mkdir -p "${SOCKET_PATH_DIR}"
+    fi
+
+    ssh -fN \
+        -o ControlMaster=auto \
+        -o Compression=yes \
+        -o ForwardX11=yes \
+        -o UserKnownHostsFile=/dev/null \
+        -o StrictHostKeyChecking=no \
+        -o LogLevel=QUIET \
+        -S "${SOCKET_PATH_FILE}" "${SSH_HOST}"
+
+}
+ssh_socket_cmd(){
+    local SSH_HOST REQUEST_TYPE SSH_CMD
+
+    SSH_HOST="$1"
+    REQUEST_TYPE="$2"
+    SSH_CMD="$3"
+
+
+    if [[ "$#" -lt 2 || "$#" -gt 3 ]]; then
+        cat <<EOF
+ssh_socket_cmd <hostname> <request_type> <command>
+Request Types:
+    check - (check that the master process is running)
+    forward - (request forwardings without command execu‐tion)
+    cancel - (cancel forwardings)
+    proxy - (connect to a running multiplexing master in proxy mode)
+    exit - (request the master to  exit)
+    stop - (request the master to stop accepting further multiplexing requests)
+EOF
+        return
+    fi
+
+    if [ -z "$SSH_CMD" ]; then
+        ssh -O "$REQUEST_TYPE" \
+            -S "${SOCKET_PATH_FILE}" "${SSH_HOST}"
+    else
+        ssh -O "$REQUEST_TYPE" "$SSH_CMD" \
+            -S "${SOCKET_PATH_FILE}" "${SSH_HOST}"
+    fi
+}
+ssh_socket_connect(){
+    local SSH_HOST
+    SSH_HOST=$1
+    
+    if [ "$#" -ne 1 ]; then
+        echo "ssh_socket_create <hostname>"
+        return
+    fi
+
+    ssh \
+        -o ControlMaster=auto \
+        -o Compression=yes \
+        -o ForwardX11=yes \
+        -o UserKnownHostsFile=/dev/null \
+        -o StrictHostKeyChecking=no \
+        -o LogLevel=QUIET \
+        -S "${SOCKET_PATH_FILE}" "${SSH_HOST}"
+}
+#--- END SSH Helpers ---
 # End Functions
 
 # Shell theme
