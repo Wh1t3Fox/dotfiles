@@ -29,20 +29,19 @@ call plug#begin(expand('~/.vim/plugged'))
 "*****************************************************************************
 Plug 'dense-analysis/ale'
 Plug 'tpope/vim-fugitive'
+Plug 'airblade/vim-gitgutter'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'airblade/vim-gitgutter'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'preservim/nerdtree'
 
-Plug 'madox2/vim-ai'
-"Plug 'gergap/vim-ollama'
+Plug 'github/copilot.vim'
 
 "" Color
-Plug 'chriskempson/base16-vim'
-
+Plug 'tinted-theming/tinted-vim'
 call plug#end()
+
 
 filetype plugin indent on
 
@@ -84,13 +83,20 @@ set ruler
 set number
 set nowrap
 
-let no_buffers_menu=1
-if !exists('g:not_finish_vimplug')
-  colorscheme base16-tomorrow-night-eighties
-  let base16colorspace=256
+if exists('$BASE16_THEME')
+    \ && (!exists('g:colors_name')
+    \ || g:colors_name != 'base16-$BASE16_THEME')
+  colorscheme base16-$BASE16_THEME
 endif
-  colorscheme base16-tomorrow-night-eighties
+
+if filereadable(expand("$HOME/.config/tinted-theming/set_theme.vim"))
   let base16colorspace=256
+  let tinted_colorspace=256
+  source $HOME/.config/tinted-theming/set_theme.vim
+endif
+
+let no_buffers_menu=1
+let tinted_background_transparent=1
 
 set t_Co=256
 
@@ -167,15 +173,6 @@ noremap <C-k> <C-w>k
 noremap <C-l> <C-w>l
 noremap <C-h> <C-w>h
 
-" vim-airline
-let g:airline_theme='base16_tomorrow_night_eighties'
-let g:airline#extensions#virtualenv#enabled = 1
-let g:airline#extensions#syntastic#enabled = 1
-let g:airline#extensions#branch#enabled = 1
-let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#tagbar#enabled = 1
-let g:airline_skip_empty_sections = 1
-
 " ale
 let g:ale_disable_lsp = 0
 let g:ale_completion_enabled = 1
@@ -188,83 +185,12 @@ nnoremap <C-n> :NERDTree<CR>
 nnoremap <C-t> :NERDTreeToggle<CR>
 nnoremap <C-f> :NERDTreeFind<CR>
 
-"*****************************************************************************
-" Vim-AI
-"*****************************************************************************
-let s:vim_ai_endpoint_url = "https://ollama.ai.west.cafe/v1/chat/completions"
+" vim-airline
+let g:airline_theme='base16_tomorrow_night_eighties'
+let g:airline#extensions#virtualenv#enabled = 1
+let g:airline#extensions#syntastic#enabled = 1
+let g:airline#extensions#branch#enabled = 1
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tagbar#enabled = 1
+let g:airline_skip_empty_sections = 1
 
-let s:initial_complete_prompt =<< trim END
->>> system
-
-You are a general assistant.
-Answer shortly, consisely and only what you are asked.
-Do not provide any explanantion or comments if not requested.
-If you answer in a code, do not wrap it in markdown code block.
-END
-let g:vim_ai_complete = {
-\  "engine": "chat",
-\  "options": {
-\    "model": "starcoder2:3b",
-\    "initial_prompt": s:initial_complete_prompt,
-\    "max_tokens": 0,
-\    "temperature": 0.1,
-\    "request_timeout": 20,
-\    "endpoint_url": s:vim_ai_endpoint_url,
-\    "auth_type": "none",
-\  },
-\  "ui": {
-\    "paste_mode": 1,
-\  },
-\}
-
-let s:vim_ai_edit_prompt =<< trim END
->>> system
-
-You will act as a code generator.
-Do not write any introduction, conclusion, or explanation.
-Do not use fenced code blocks.
-Respect the original indentation level.
-END
-let g:vim_ai_edit = {
-\  "engine": "chat",
-\  "options": {
-\    "model": "qwen2.5-coder:3b",
-\    "initial_prompt": s:vim_ai_edit_prompt,
-\    "temperature": 1,
-\    "max_tokens": 0,
-\    "request_timeout": 60,
-\    "endpoint_url": s:vim_ai_endpoint_url,
-\    "auth_type": "none",
-\  },
-\  "ui": {
-\    "paste_mode": 1,
-\  },
-\}
-
-
-let s:vim_ai_chat_prompt =<< trim END
->>> system
-
-You are a helpful code assistant.
-Assume that all unknown symbols are properly initialized elsewhere.
-Add a syntax type after ``` to enable proper syntax highlighting in fenced code blocks.
-END
-
-let g:vim_ai_chat = {
-\  "engine": "chat",
-\  "options": {
-\    "model": "llama3.1:8b",
-\    "initial_prompt": s:vim_ai_chat_prompt,
-\    "temperature": 1,
-\    "max_tokens": 0,
-\    "request_timeout": 60,
-\    "endpoint_url": s:vim_ai_endpoint_url,
-\    "auth_type": "none",
-\  },
-\  "ui": {
-\    "code_syntax_enabled": 1,
-\  },
-\}
-
-"*****************************************************************************
-"*****************************************************************************

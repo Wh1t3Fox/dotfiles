@@ -62,6 +62,7 @@ plugins=(
     ssh
     ssh-agent
     terraform
+    tinted-shell
     tmux
     vi-mode
 )
@@ -164,48 +165,28 @@ ssh_socket_connect(){
 # End Functions
 
 # Shell theme
-if [[ ! -d ~/.config/base16-shell ]]; then
-  git clone https://github.com/chriskempson/base16-shell.git ~/.config/base16-shell
+BASE16_SHELL_PATH="$HOME/.config/tinted-theming/tinted-shell"
+if [[ ! -d "$BASE16_SHELL_PATH" ]]; then
+  mkfir -p "$HOME/.config/tinted-theming"
+  git clone https://github.com/tinted-theming/tinted-shell.git "$BASE16_SHELL_PATH"
 fi
 
-# Base16 Shell
-BASE16_SHELL="$HOME/.config/base16-shell"
+# Tinted Shell
 [ -n "$PS1" ] && \
-    [ -s "$BASE16_SHELL/profile_helper.sh" ] && \
-        source "$BASE16_SHELL/profile_helper.sh"
+  [ -s "$BASE16_SHELL_PATH/profile_helper.sh" ] && \
+    source "$BASE16_SHELL_PATH/profile_helper.sh"
 
-# fzf colors
-# Scheme name: Tomorrow Night Eighties
-# Scheme system: base16
-# Scheme author: Chris Kempson (http://chriskempson.com)
-# Template author: Tinted Theming (https://github.com/tinted-theming)
+# FZF theme
+BASE16_FZF_PATH="$HOME/.config/tinted-theming/tinted-fzf"
+if [[ ! -d "$BASE16_FZF_PATH" ]]; then
+  mkfir -p "$HOME/.config/tinted-theming"
+  git clone https://github.com/tinted-theming/tinted-fzf "$BASE16_FZF_PATH"
+fi
 
-_gen_fzf_default_opts() {
-
-local color00='#2d2d2d'
-local color01='#393939'
-local color02='#515151'
-local color03='#999999'
-local color04='#b4b7b4'
-local color05='#cccccc'
-local color06='#e0e0e0'
-local color07='#ffffff'
-local color08='#f2777a'
-local color09='#f99157'
-local color0A='#ffcc66'
-local color0B='#99cc99'
-local color0C='#66cccc'
-local color0D='#6699cc'
-local color0E='#cc99cc'
-local color0F='#a3685a'
-
-export FZF_DEFAULT_OPTS="$FZF_DEFAULT_OPTS"\
-" --color=bg+:$color01,bg:$color00,spinner:$color0C,hl:$color0D"\
-" --color=fg:$color04,header:$color0D,info:$color0A,pointer:$color0C"\
-" --color=marker:$color0C,fg+:$color06,prompt:$color0A,hl+:$color0D"
-
-}
-
-_gen_fzf_default_opts
 # Set up fzf key bindings and fuzzy completion
 source <(fzf --zsh)
+export FZF_DEFAULT_OPTS="$FZF_DEFAULT_OPTS"\
+" --color=bg:0,fg:7,hl:3"\
+" --color=bg+:8,fg+:7,hl+:11"\
+" --color=info:3,border:3,prompt:4"\
+" --color=pointer:0,marker:9,spinner:9,header:1"
