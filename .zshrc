@@ -164,6 +164,13 @@ ssh_socket_connect(){
 #--- END SSH Helpers ---
 # End Functions
 
+# TPM
+TPM_DIR="$HOME/.tmux/plugins/tpm"
+if [[ ! -d "$TPM_DIR" ]]; then
+    mkdir -p "$HOME/.tmux/plugins"
+    git clone https://github.com/tmux-plugins/tpm "$TPM_DIR"
+fi
+
 # Shell theme
 BASE16_SHELL_PATH="$HOME/.config/tinted-theming/tinted-shell"
 if [[ ! -d "$BASE16_SHELL_PATH" ]]; then
@@ -185,8 +192,3 @@ fi
 
 # Set up fzf key bindings and fuzzy completion
 source <(fzf --zsh)
-export FZF_DEFAULT_OPTS="$FZF_DEFAULT_OPTS"\
-" --color=bg:0,fg:7,hl:3"\
-" --color=bg+:8,fg+:7,hl+:11"\
-" --color=info:3,border:3,prompt:4"\
-" --color=pointer:0,marker:9,spinner:9,header:1"
