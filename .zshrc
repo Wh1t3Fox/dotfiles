@@ -75,6 +75,7 @@ alias vi='/usr/bin/vim'
 alias please='sudo `fc -ln -1`'
 alias dropped_pkts='journalctl -fk | grep "DROP"'
 alias python='python3'
+alias update='sudo pacman -Syu'
 
 # Start Functions
 rshred() {
